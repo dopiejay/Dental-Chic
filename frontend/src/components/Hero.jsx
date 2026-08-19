@@ -11,7 +11,7 @@ export default function Hero() {
         <img
           src={heroImage}
           alt="Patient smiling at dental clinic"
-          className="h-full w-full object-cover object-top"
+          className="h-full w-full object-cover object-top md:object-center"
         />
         {/* Mobile: heavy dark overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-ink/90 via-ink/70 to-ink/50 md:bg-gradient-to-r md:from-ink md:via-ink/70 md:to-transparent" />
