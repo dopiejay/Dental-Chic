@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { CalendarIcon, CheckCircleIcon, MonitorIcon, ClockIcon } from './Icons';
 
 export default function Hero() {
   return (
@@ -14,17 +15,19 @@ export default function Hero() {
             <span className="font-display text-chic-teal italic">smiles</span> begin.
           </h1>
           <p className="mt-5 mb-8 max-w-md text-lg text-slate">
-            Gentle, modern dental care for the whole family — general dentistry, cosmetic
-            treatments, and orthodontics from Dr. Shabana Yusuf and the Dental Chic team.
+            Professional, compassionate dental care designed around your comfort, health and
+            confidence. General dentistry, cosmetic treatments, and orthodontics from Dr. Shabana
+            Yusuf and the Dental Chic team.
           </p>
 
           <div className="mb-11 flex flex-wrap gap-3.5">
-            <a
-              href="#book"
-              className="rounded-full bg-ink px-7.5 py-4 text-base font-bold text-white transition-all hover:-translate-y-px hover:bg-chic-green-deep"
+            <Link
+              to="/book"
+              className="inline-flex items-center gap-2 rounded-full bg-ink px-7.5 py-4 text-base font-bold text-white transition-all hover:-translate-y-px hover:bg-chic-green-deep"
             >
+              <CalendarIcon size={18} />
               Book an Appointment
-            </a>
+            </Link>
             <Link
               to="/services"
               className="rounded-full border-[1.5px] border-ink px-7.5 py-4 text-base font-bold transition-colors hover:bg-ink hover:text-white"
@@ -34,11 +37,11 @@ export default function Hero() {
           </div>
 
           <div className="flex items-center gap-5">
-            <Trust value="12+" label="years in practice" />
+            <Trust icon={<CheckCircleIcon size={16} className="text-chic-green" />} value="Experienced" label="Dental Professionals" />
             <div className="h-8 w-px bg-stone" />
-            <Trust value="100%" label="patient recommend rate" />
+            <Trust icon={<MonitorIcon size={16} className="text-chic-green" />} value="Modern" label="Dental Care" />
             <div className="h-8 w-px bg-stone" />
-            <Trust value="Digital" label="X-ray on site" />
+            <Trust icon={<ClockIcon size={16} className="text-chic-green" />} value="12+" label="Years in Practice" />
           </div>
         </div>
 
@@ -79,9 +82,9 @@ export default function Hero() {
           <div className="absolute top-[6%] -right-2 hidden w-52 rounded-2xl border border-stone bg-white p-4 shadow-[0_16px_40px_rgba(27,31,29,0.08)] sm:block">
             <p className="mb-1 text-[0.8rem] font-bold">Need an appointment?</p>
             <p className="mb-3 text-[0.76rem] text-slate">Choose a convenient time with our team.</p>
-            <a href="#book" className="text-[0.78rem] font-bold text-chic-green-deep hover:underline">
+            <Link to="/book" className="text-[0.78rem] font-bold text-chic-green-deep hover:underline">
               Book Now →
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -89,10 +92,13 @@ export default function Hero() {
   );
 }
 
-function Trust({ value, label }) {
+function Trust({ icon, value, label }) {
   return (
     <div className="flex flex-col">
-      <strong className="font-display text-[1.3rem]">{value}</strong>
+      <span className="mb-0.5 flex items-center gap-1.5">
+        {icon}
+        <strong className="font-display text-[1.1rem]">{value}</strong>
+      </span>
       <span className="text-[0.78rem] text-slate">{label}</span>
     </div>
   );

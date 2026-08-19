@@ -5,6 +5,9 @@ import dotenv from 'dotenv';
 import servicesRouter from './routes/services.js';
 import appointmentsRouter from './routes/appointments.js';
 import authRouter from './routes/auth.js';
+import teamRouter from './routes/team.js';
+import testimonialsRouter from './routes/testimonials.js';
+import contactRouter from './routes/contact.js';
 
 dotenv.config({ quiet: true });
 
@@ -20,6 +23,9 @@ app.get('/api/health', (req, res) => {
 app.use('/api/services', servicesRouter);
 app.use('/api/appointments', appointmentsRouter);
 app.use('/api/auth', authRouter);
+app.use('/api/team', teamRouter);
+app.use('/api/testimonials', testimonialsRouter);
+app.use('/api/contact', contactRouter);
 
 app.use((req, res) => {
   res.status(404).json({ error: 'Not found.' });

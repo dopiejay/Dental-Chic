@@ -1,8 +1,10 @@
+import { MessageSquareIcon, SearchIcon, StethoscopeIcon, HeartHandshakeIcon } from './Icons';
+
 const steps = [
-  { num: '01', title: 'Consultation', desc: 'We start by understanding your dental needs and concerns.' },
-  { num: '02', title: 'Diagnosis', desc: 'A thorough examination, with digital X-ray on site if needed.' },
-  { num: '03', title: 'Treatment', desc: 'A personalised plan carried out with minimally invasive technique.' },
-  { num: '04', title: 'Follow-Up', desc: 'Continuous care so your treatment lasts and heals well.' },
+  { num: '01', icon: MessageSquareIcon, title: 'Consultation', desc: 'We start by understanding your dental needs and concerns.' },
+  { num: '02', icon: SearchIcon, title: 'Diagnosis', desc: 'A thorough examination, with digital X-ray on site if needed.' },
+  { num: '03', icon: StethoscopeIcon, title: 'Treatment', desc: 'A personalised plan carried out with minimally invasive technique.' },
+  { num: '04', icon: HeartHandshakeIcon, title: 'Follow-Up', desc: 'Continuous care so your treatment lasts and heals well.' },
 ];
 
 export default function TreatmentJourney() {
@@ -25,15 +27,18 @@ export default function TreatmentJourney() {
         </svg>
 
         <div className="relative grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4">
-          {steps.map((s) => (
-            <div key={s.num} className="text-center">
-              <div className="relative z-10 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full border-2 border-chic-teal bg-white font-display text-sm font-medium text-chic-teal">
-                {s.num}
+          {steps.map((s) => {
+            const Icon = s.icon;
+            return (
+              <div key={s.num} className="text-center">
+                <div className="relative z-10 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full border-2 border-chic-teal bg-white text-chic-teal">
+                  <Icon size={20} />
+                </div>
+                <h4 className="mb-1.5 font-display text-[1.05rem] font-medium">{s.title}</h4>
+                <p className="text-[0.88rem] text-slate">{s.desc}</p>
               </div>
-              <h4 className="mb-1.5 font-display text-[1.05rem] font-medium">{s.title}</h4>
-              <p className="text-[0.88rem] text-slate">{s.desc}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

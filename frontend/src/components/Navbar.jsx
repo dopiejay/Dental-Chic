@@ -1,16 +1,23 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { MenuIcon, XIcon, MessageCircleIcon } from './Icons';
 import Wordmark from './Wordmark';
 
 const links = [
-  { to: '/services', label: 'Services' },
+  { to: '/', label: 'Home' },
   { to: '/about', label: 'About Us' },
-  { to: '/#reviews', label: 'Reviews' },
-  { to: '/#find-us', label: 'Find Us' },
+  { to: '/services', label: 'Services' },
+  { to: '/contact', label: 'Contact' },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
+
+  function isActive(to) {
+    if (to === '/') return pathname === '/';
+    return pathname.startsWith(to);
+  }
 
   return (
     <header className="sticky top-0 z-50 border-b border-stone bg-paper/85 backdrop-blur-md">
@@ -21,7 +28,11 @@ export default function Navbar() {
 
         <nav aria-label="Primary" className="hidden gap-7 text-[0.92rem] font-semibold md:flex">
           {links.map((l) => (
-            <Link key={l.to} to={l.to} className="opacity-75 transition-opacity hover:opacity-100">
+            <Link
+              key={l.to}
+              to={l.to}
+              className={`transition-colors ${isActive(l.to) ? 'text-chic-green-deep' : 'opacity-75 hover:opacity-100'}`}
+            >
               {l.label}
             </Link>
           ))}
@@ -32,12 +43,13 @@ export default function Navbar() {
             href="https://wa.me/265998951880"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-stone px-5 py-3 text-sm font-bold transition-colors hover:bg-[#e2e4dd]"
+            className="flex items-center gap-2 rounded-full bg-stone px-5 py-3 text-sm font-bold transition-colors hover:bg-[#e2e4dd]"
           >
-            WhatsApp Us
+            <MessageCircleIcon size={15} />
+            WhatsApp
           </a>
           <Link
-            to="/#book"
+            to="/book"
             className="rounded-full bg-ink px-5 py-3 text-sm font-bold text-white transition-all hover:-translate-y-px hover:bg-chic-green-deep"
           >
             Book Appointment
@@ -50,23 +62,34 @@ export default function Navbar() {
           aria-expanded={open}
           onClick={() => setOpen((o) => !o)}
         >
-          <span className="h-0.5 w-5.5 rounded bg-ink" />
-          <span className="h-0.5 w-5.5 rounded bg-ink" />
-          <span className="h-0.5 w-5.5 rounded bg-ink" />
+          {open ? <XIcon size={24} /> : <MenuIcon size={24} />}
         </button>
       </div>
 
       {open && (
         <div className="flex flex-col gap-4 border-b border-stone bg-paper px-6 pb-6 md:hidden">
           {links.map((l) => (
-            <Link key={l.to} to={l.to} className="font-semibold" onClick={() => setOpen(false)}>
+            <Link
+              key={l.to}
+              to={l.to}
+              className={`font-semibold ${isActive(l.to) ? 'text-chic-green-deep' : ''}`}
+              onClick={() => setOpen(false)}
+            >
               {l.label}
             </Link>
           ))}
-          <a href="https://wa.me/265998951880" className="rounded-full bg-stone px-5 py-3 text-center text-sm font-bold">
+          <a
+            href="https://wa.me/265998951880"
+            className="flex items-center justify-center gap-2 rounded-full bg-stone px-5 py-3 text-sm font-bold"
+          >
+            <MessageCircleIcon size={15} />
             WhatsApp Us
           </a>
-          <Link to="/#book" className="rounded-full bg-ink px-5 py-3 text-center text-sm font-bold text-white" onClick={() => setOpen(false)}>
+          <Link
+            to="/book"
+            className="rounded-full bg-ink px-5 py-3 text-center text-sm font-bold text-white"
+            onClick={() => setOpen(false)}
+          >
             Book Appointment
           </Link>
         </div>

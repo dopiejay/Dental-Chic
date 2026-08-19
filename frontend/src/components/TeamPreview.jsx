@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { ArrowRightIcon } from './Icons';
 
 export default function TeamPreview() {
   return (
@@ -9,7 +10,7 @@ export default function TeamPreview() {
       </div>
 
       <div className="mx-auto grid max-w-4xl grid-cols-1 items-center gap-10 rounded-3xl border border-stone bg-white p-10 md:grid-cols-[220px_1fr]">
-        <div className="mx-auto w-36 overflow-hidden rounded-full bg-stone md:w-full" aria-hidden="true">
+        <div className="mx-auto w-36 overflow-hidden rounded-full bg-gradient-to-br from-stone to-chic-teal/20 md:w-full aspect-square flex items-center justify-center" aria-hidden="true">
           <svg viewBox="0 0 200 200" width="100%" height="100%">
             <circle cx="100" cy="100" r="100" fill="#EDEEEA" />
             <circle cx="100" cy="80" r="34" fill="#1B1F1D" opacity="0.85" />
@@ -25,11 +26,18 @@ export default function TeamPreview() {
             offering minimally invasive general care alongside orthodontics and minor oral surgery
             for patients across Blantyre.
           </p>
+          <div className="mb-5 flex flex-wrap justify-center gap-2.5 md:justify-start">
+            {['Cosmetic Dentistry', 'Orthodontics', 'Minor Oral Surgery'].map((t) => (
+              <span key={t} className="rounded-full bg-stone px-3.5 py-1.5 text-[0.8rem] font-semibold">
+                {t}
+              </span>
+            ))}
+          </div>
           <Link
             to="/about"
             className="inline-flex items-center gap-2 font-bold text-chic-green-deep hover:underline"
           >
-            Meet the full team →
+            Meet the full team <ArrowRightIcon size={16} />
           </Link>
         </div>
       </div>

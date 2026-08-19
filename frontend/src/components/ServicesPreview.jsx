@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
+import { StethoscopeIcon, SparklesIcon, SyringeIcon, BabyIcon, ScanLineIcon } from './Icons';
 
 const services = [
-  { icon: '🦷', title: 'General Dentistry', desc: 'Check-ups, cleanings, and fillings that keep small problems from becoming big ones.' },
-  { icon: '✨', title: 'Cosmetic Dentistry', desc: "Veneers, whitening, and smile makeovers — Dr. Yusuf's specialist focus." },
-  { icon: '🪥', title: 'Braces & Orthodontics', desc: 'Fixed and aligner braces for children and adults, tracked visit by visit.' },
-  { icon: '🦴', title: 'Crowns & Bridges', desc: 'Zirconia and E-max restorations built to match your natural bite and shade.' },
-  { icon: '🩻', title: 'Digital X-Ray', desc: 'On-site imaging for faster, more accurate diagnosis — no separate referral needed.' },
-  { icon: '🔧', title: 'Minor Oral Surgery', desc: 'Extractions and minor procedures handled with minimally invasive technique.' },
+  { icon: StethoscopeIcon, title: 'General Dentistry', desc: 'Check-ups, cleanings, and fillings that keep small problems from becoming big ones.' },
+  { icon: SparklesIcon, title: 'Cosmetic Dentistry', desc: "Veneers, whitening, and smile makeovers — Dr. Yusuf's specialist focus." },
+  { icon: SyringeIcon, title: 'Braces & Orthodontics', desc: 'Fixed and aligner braces for children and adults, tracked visit by visit.' },
+  { icon: StethoscopeIcon, title: 'Crowns & Bridges', desc: 'Zirconia and E-max restorations built to match your natural bite and shade.' },
+  { icon: ScanLineIcon, title: 'Digital X-Ray', desc: 'On-site imaging for faster, more accurate diagnosis — no separate referral needed.' },
+  { icon: BabyIcon, title: "Children's Dentistry", desc: 'Gentle care designed for younger patients in a comfortable environment.' },
 ];
 
 export default function ServicesPreview() {
@@ -24,16 +25,21 @@ export default function ServicesPreview() {
       </div>
 
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {services.map((s) => (
-          <article
-            key={s.title}
-            className="rounded-2xl border border-stone bg-paper p-7.5 transition-all hover:-translate-y-1 hover:border-chic-teal"
-          >
-            <div className="mb-3.5 text-3xl">{s.icon}</div>
-            <h3 className="mb-2 font-display text-[1.15rem] font-medium">{s.title}</h3>
-            <p className="text-[0.92rem] text-slate">{s.desc}</p>
-          </article>
-        ))}
+        {services.map((s) => {
+          const Icon = s.icon;
+          return (
+            <article
+              key={s.title}
+              className="rounded-2xl border border-stone bg-paper p-7.5 transition-all hover:-translate-y-1 hover:border-chic-teal"
+            >
+              <div className="mb-3.5 flex h-11 w-11 items-center justify-center rounded-xl bg-chic-teal/10 text-chic-teal">
+                <Icon size={22} />
+              </div>
+              <h3 className="mb-2 font-display text-[1.15rem] font-medium">{s.title}</h3>
+              <p className="text-[0.92rem] text-slate">{s.desc}</p>
+            </article>
+          );
+        })}
       </div>
 
       <div className="mt-10 text-center">
