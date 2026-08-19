@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import TopBar from './components/TopBar';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -26,7 +25,6 @@ export default function App() {
           path="/*"
           element={
             <>
-              <TopBar />
               <Navbar />
               <Routes>
                 <Route path="/" element={<Home />} />
