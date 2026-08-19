@@ -8,7 +8,7 @@ const services = [
     desc: 'Routine dental care and preventive treatment — check-ups, cleanings, and fillings that keep small problems from becoming big ones.',
     color: 'from-chic-teal/20 to-chic-green/10',
     iconColor: 'text-chic-teal bg-chic-teal/10',
-    img: 'https://images.pexels.com/photos/3952017/pexels-photo-3952017.jpeg?auto=compress&cs=tinysrgb&w=400',
+    img: '/images/general.jpg',
   },
   {
     icon: SparklesIcon,
@@ -16,7 +16,7 @@ const services = [
     desc: "Enhance the appearance of your smile with veneers, whitening, and full smile makeovers — Dr. Yusuf's specialist focus.",
     color: 'from-amber-100/60 to-orange-50/40',
     iconColor: 'text-amber-600 bg-amber-100/60',
-    img: 'https://images.pexels.com/photos/3881417/pexels-photo-3881417.jpeg?auto=compress&cs=tinysrgb&w=400',
+    img: '/images/cosmetic.jpg',
   },
   {
     icon: SyringeIcon,
@@ -24,7 +24,7 @@ const services = [
     desc: 'Straighter teeth and improved alignment with fixed and aligner braces, for children and adults, tracked visit by visit.',
     color: 'from-blue-100/60 to-sky-50/40',
     iconColor: 'text-blue-600 bg-blue-100/60',
-    img: 'https://images.pexels.com/photos/6627353/pexels-photo-6627353.jpeg?auto=compress&cs=tinysrgb&w=400',
+    img: '/images/orthodontics.jpg',
   },
 ];
 

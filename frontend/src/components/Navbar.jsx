@@ -34,10 +34,10 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
+      className={`z-50 transition-all duration-300 ${
         showBg
-          ? 'border-b border-stone bg-paper/85 backdrop-blur-md'
-          : 'border-b border-white/10 bg-transparent backdrop-blur-sm'
+          ? 'sticky top-0 border-b border-stone bg-paper/95 backdrop-blur-md'
+          : 'absolute top-0 left-0 right-0 border-b-0 bg-transparent'
       }`}
     >
       <div className="mx-auto flex max-w-6xl items-center gap-8 px-6 py-4">

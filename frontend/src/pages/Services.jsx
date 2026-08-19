@@ -3,18 +3,18 @@ import { StethoscopeIcon, SparklesIcon, SyringeIcon, ScanLineIcon, BabyIcon, Wre
 import PageHero from '../components/PageHero';
 
 const services = [
-  { icon: StethoscopeIcon, title: 'General Dentistry', desc: 'Routine dental care and preventive treatment — check-ups, cleanings, and fillings that keep small problems from becoming big ones.', color: 'from-chic-teal/20 to-chic-green/10', iconColor: 'text-chic-teal bg-chic-teal/10', img: 'https://images.pexels.com/photos/3952017/pexels-photo-3952017.jpeg?auto=compress&cs=tinysrgb&w=400' },
-  { icon: SparklesIcon, title: 'Cosmetic Dentistry', desc: "Enhance the appearance of your smile with veneers, whitening, and full smile makeovers — Dr. Yusuf's specialist focus.", color: 'from-amber-100/60 to-orange-50/40', iconColor: 'text-amber-600 bg-amber-100/60', img: 'https://images.pexels.com/photos/3881417/pexels-photo-3881417.jpeg?auto=compress&cs=tinysrgb&w=400' },
-  { icon: SyringeIcon, title: 'Orthodontics', desc: 'Straighter teeth and improved alignment with fixed and aligner braces, for children and adults, tracked visit by visit.', color: 'from-blue-100/60 to-sky-50/40', iconColor: 'text-blue-600 bg-blue-100/60', img: 'https://images.pexels.com/photos/6627353/pexels-photo-6627353.jpeg?auto=compress&cs=tinysrgb&w=400' },
-  { icon: WrenchIcon, title: 'Crowns & Bridges', desc: 'Zirconia and E-max restorations built to match your natural bite and shade.', color: 'from-purple-100/60 to-pink-50/40', iconColor: 'text-purple-600 bg-purple-100/60', img: 'https://images.pexels.com/photos/4269946/pexels-photo-4269946.jpeg?auto=compress&cs=tinysrgb&w=400' },
+  { icon: StethoscopeIcon, title: 'General Dentistry', desc: 'Routine dental care and preventive treatment — check-ups, cleanings, and fillings that keep small problems from becoming big ones.', color: 'from-chic-teal/20 to-chic-green/10', iconColor: 'text-chic-teal bg-chic-teal/10', img: '/images/general.jpg' },
+  { icon: SparklesIcon, title: 'Cosmetic Dentistry', desc: "Enhance the appearance of your smile with veneers, whitening, and full smile makeovers — Dr. Yusuf's specialist focus.", color: 'from-amber-100/60 to-orange-50/40', iconColor: 'text-amber-600 bg-amber-100/60', img: '/images/cosmetic.jpg' },
+  { icon: SyringeIcon, title: 'Orthodontics', desc: 'Straighter teeth and improved alignment with fixed and aligner braces, for children and adults, tracked visit by visit.', color: 'from-blue-100/60 to-sky-50/40', iconColor: 'text-blue-600 bg-blue-100/60', img: '/images/orthodontics.jpg' },
+  { icon: WrenchIcon, title: 'Crowns & Bridges', desc: 'Zirconia and E-max restorations built to match your natural bite and shade.', color: 'from-purple-100/60 to-pink-50/40', iconColor: 'text-purple-600 bg-purple-100/60', img: '/images/crowns-bridges.jpg' },
   { icon: BabyIcon, title: "Children's Dentistry", desc: 'Gentle care designed for younger patients in a comfortable environment.', color: 'from-pink-100/60 to-rose-50/40', iconColor: 'text-pink-600 bg-pink-100/60', img: '/images/child.jpg' },
-  { icon: ScanLineIcon, title: 'Digital X-Ray', desc: 'Modern, on-site diagnostic imaging for faster and more accurate diagnosis — no separate referral needed.', color: 'from-emerald-100/60 to-teal-50/40', iconColor: 'text-emerald-600 bg-emerald-100/60', img: 'https://images.pexels.com/photos/4270379/pexels-photo-4270379.jpeg?auto=compress&cs=tinysrgb&w=400' },
+  { icon: ScanLineIcon, title: 'Digital X-Ray', desc: 'Modern, on-site diagnostic imaging for faster and more accurate diagnosis — no separate referral needed.', color: 'from-emerald-100/60 to-teal-50/40', iconColor: 'text-emerald-600 bg-emerald-100/60', img: '/images/xray.jpg' },
 ];
 
 export default function ServicesPage() {
   return (
     <>
-      <PageHero eyebrow="What we treat" title="Dental care for every stage of your smile." crumb="Services" image="https://images.pexels.com/photos/3952017/pexels-photo-3952017.jpeg?auto=compress&cs=tinysrgb&w=800" />
+      <PageHero eyebrow="What we treat" title="Dental care for every stage of your smile." crumb="Services" image="/images/general.jpg" />
 
       <section className="bg-white px-6 py-24">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
