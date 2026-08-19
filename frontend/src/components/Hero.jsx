@@ -1,25 +1,26 @@
 import { Link } from 'react-router-dom';
 import { PhoneIcon, CalendarIcon, MessageCircleIcon } from './Icons';
 
-const heroImage = 'https://images.pexels.com/photos/3845981/pexels-photo-3845981.jpeg?auto=compress&cs=tinysrgb&w=800';
+const heroImage = 'https://images.pexels.com/photos/8669945/pexels-photo-8669945.jpeg?auto=compress&cs=tinysrgb&w=1200';
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-ink">
-      {/* Background image with dark overlay */}
+    <section className="relative min-h-[600px] overflow-hidden bg-ink lg:min-h-[700px]">
+      {/* Full background image */}
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt=""
-          className="h-full w-full object-cover opacity-30"
+          alt="Patient smiling at dental clinic"
+          className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-ink/40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ink/20 to-ink/60" />
+        {/* Dark overlay: heavy on left (text side), clear on right (image side) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-ink/30" />
       </div>
 
-      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 pt-24 pb-20 lg:grid-cols-[1fr_400px]">
+      <div className="relative mx-auto flex min-h-[600px] max-w-7xl items-center px-6 py-24 lg:min-h-[700px]">
         {/* Left: Copy */}
-        <div className="relative z-10">
+        <div className="relative z-10 max-w-xl">
           <p className="mb-3 text-[0.8rem] font-bold tracking-[0.14em] text-chic-green uppercase">
             Professional dental care in Blantyre
           </p>
@@ -27,7 +28,7 @@ export default function Hero() {
             Your smile, our<br />
             <span className="italic text-chic-green">passion.</span>
           </h1>
-          <p className="mb-8 max-w-lg text-[1.05rem] text-white/70">
+          <p className="mb-8 max-w-lg text-[1.05rem] text-white/80">
             General, cosmetic, and orthodontic dental care in Blantyre — gentle technique, current
             materials, and a family-friendly clinic built around you.
           </p>
@@ -64,41 +65,9 @@ export default function Hero() {
             </span>
           </div>
         </div>
-
-        {/* Right: Floating cards */}
-        <div className="relative hidden lg:block">
-          <div className="relative z-10 rounded-3xl bg-white/10 p-6 backdrop-blur-md">
-            <div className="mb-4 flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-chic-green text-ink">
-                <PhoneIcon size={18} />
-              </div>
-              <div>
-                <p className="text-[0.78rem] text-white/60">Need an appointment?</p>
-                <p className="font-bold text-white">Call +265 998 95 18 80</p>
-              </div>
-            </div>
-            <p className="mb-4 rounded-2xl bg-white/5 p-3.5 text-[0.82rem] text-white/70">
-              <span className="font-bold text-chic-green">Accepting RESMAID scheme</span> — ask
-              us about your coverage at your next visit.
-            </p>
-            <a
-              href="https://wa.me/265998951880"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-chic-green px-6 py-3 text-sm font-bold text-ink transition-all hover:bg-white hover:text-chic-green-deep"
-            >
-              <MessageCircleIcon size={16} />
-              Chat on WhatsApp
-            </a>
-          </div>
-
-          {/* Decorative floating element */}
-          <div className="absolute -top-4 -right-4 h-24 w-24 rounded-full bg-chic-green/20 blur-2xl" />
-          <div className="absolute -bottom-6 -left-6 h-32 w-32 rounded-full bg-chic-teal/20 blur-3xl" />
-        </div>
       </div>
 
-      {/* Wave divider */}
+      {/* Bottom wave divider */}
       <div className="absolute bottom-0 left-0 right-0">
         <svg viewBox="0 0 1440 80" fill="none" className="w-full">
           <path
