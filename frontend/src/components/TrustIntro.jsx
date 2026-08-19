@@ -1,34 +1,34 @@
 import { AwardIcon, MapPinIcon, LayersIcon } from './Icons';
 
+const aboutImage = 'https://images.pexels.com/photos/3952017/pexels-photo-3952017.jpeg?auto=compress&cs=tinysrgb&w=800';
+
 export default function TrustIntro() {
   return (
-    <section className="bg-white px-6 py-24">
+    <section className="bg-paper px-6 py-24">
       <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-14 md:grid-cols-2">
-        <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-stone to-chic-teal/10 aspect-[4/3]">
-          <div className="flex h-full w-full items-center justify-center">
-            <svg viewBox="0 0 400 340" width="100%" height="100%" className="opacity-60">
-              <circle cx="200" cy="170" r="110" fill="#5FBF4D" opacity="0.1" />
-              <circle cx="150" cy="120" r="50" fill="#2CB4C0" opacity="0.15" />
-              <g transform="translate(140,90)">
-                <path
-                  d="M60 4c-12 0-18 6-24 6s-9-3-15-3c-9 0-12 9-12 18 0 18 9 30 12 48 2 9 5 15 10 15 6 0 6-12 9-24 2-8 4-12 8-12s6 4 8 12c3 12 3 24 9 24 5 0 8-6 10-15 3-18 12-30 12-48 0-9-3-18-12-18-6 0-9 3-15 3s-12-6-24-6z"
-                  fill="none"
-                  stroke="#2CB4C0"
-                  strokeWidth="2.5"
-                  strokeLinejoin="round"
-                />
-              </g>
-            </svg>
+        {/* Image side */}
+        <div className="relative overflow-hidden rounded-3xl">
+          <img
+            src={aboutImage}
+            alt="Dental care at Dental Chic"
+            className="aspect-[4/3] w-full object-cover"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-tr from-chic-green-deep/30 to-transparent" />
+          {/* Floating badge */}
+          <div className="absolute bottom-4 left-4 rounded-2xl bg-white/95 px-5 py-3 shadow-lg backdrop-blur-sm">
+            <p className="text-[0.72rem] font-bold tracking-wider text-chic-green-deep uppercase">Trusted since</p>
+            <p className="font-display text-2xl font-medium text-ink">2013</p>
           </div>
         </div>
 
+        {/* Text side */}
         <div>
           <p className="mb-3 text-[0.8rem] font-bold tracking-[0.14em] text-chic-green-deep uppercase">
             Welcome to Dental Chic
           </p>
           <h2 className="mb-5 font-display text-[clamp(1.8rem,3vw,2.6rem)] font-medium">
-            More than treatment.
-            <br />A better dental experience.
+            More than treatment.<br />A better dental experience.
           </h2>
           <p className="mb-4 text-slate">
             Dental Chic has been part of Blantyre since 2013, offering general and specialised

@@ -6,16 +6,16 @@ import PageHero from '../components/PageHero';
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
 
 const contactCards = [
-  { icon: MapPinIcon, title: 'Visit Us', value: 'Kidney Crescent, Blantyre, Malawi', action: null },
-  { icon: PhoneIcon, title: 'Call Us', value: '+265 998 95 18 80', action: 'tel:+265998951880' },
-  { icon: MessageCircleIcon, title: 'WhatsApp', value: 'Chat with us anytime', action: 'https://wa.me/265998951880' },
-  { icon: MailIcon, title: 'Email Us', value: 'dentalchic@outlook.com', action: 'mailto:dentalchic@outlook.com' },
+  { icon: MapPinIcon, title: 'Visit Us', value: 'Kidney Crescent, Blantyre, Malawi', action: null, color: 'bg-chic-teal/10 text-chic-teal' },
+  { icon: PhoneIcon, title: 'Call Us', value: '+265 998 95 18 80', action: 'tel:+265998951880', color: 'bg-emerald-100/60 text-emerald-600' },
+  { icon: MessageCircleIcon, title: 'WhatsApp', value: 'Chat with us anytime', action: 'https://wa.me/265998951880', color: 'bg-green-100/60 text-green-600' },
+  { icon: MailIcon, title: 'Email Us', value: 'dentalchic@outlook.com', action: 'mailto:dentalchic@outlook.com', color: 'bg-blue-100/60 text-blue-600' },
 ];
 
 const hours = [
-  { day: 'Monday – Friday', time: '9:00 – 16:00' },
-  { day: 'Saturday', time: '9:00 – 12:00' },
-  { day: 'Sunday', time: 'Closed' },
+  { day: 'Monday – Friday', time: '9:00 – 16:00', highlight: true },
+  { day: 'Saturday', time: '9:00 – 12:00', highlight: true },
+  { day: 'Sunday', time: 'Closed', highlight: false },
 ];
 
 export default function ContactPage() {
@@ -60,6 +60,7 @@ export default function ContactPage() {
     <>
       <PageHero eyebrow="Get in touch" title="We're here to help you smile." crumb="Contact" />
 
+      {/* Contact Cards */}
       <section className="bg-white px-6 py-20">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {contactCards.map((c) => {
@@ -72,12 +73,12 @@ export default function ContactPage() {
               <Wrapper
                 key={c.title}
                 {...wrapperProps}
-                className="flex flex-col items-center rounded-2xl border border-stone bg-paper p-7 text-center transition-all hover:-translate-y-1 hover:border-chic-teal"
+                className="group flex flex-col items-center rounded-2xl border border-stone bg-gradient-to-b from-white to-stone/30 p-7 text-center transition-all duration-300 hover:-translate-y-1 hover:border-chic-teal hover:shadow-lg hover:shadow-chic-teal/5"
               >
-                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-chic-teal/10 text-chic-teal">
-                  <Icon size={22} />
+                <div className={`mb-3 flex h-14 w-14 items-center justify-center rounded-2xl ${c.color} transition-transform group-hover:scale-110`}>
+                  <Icon size={24} />
                 </div>
-                <h3 className="mb-1 font-display text-lg font-medium">{c.title}</h3>
+                <h3 className="mb-1 font-display text-lg font-medium text-ink">{c.title}</h3>
                 <p className="text-[0.88rem] text-slate">{c.value}</p>
               </Wrapper>
             );
@@ -85,61 +86,64 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="bg-stone px-6 py-20">
+      {/* Map + Form + Hours */}
+      <section className="bg-gradient-to-b from-stone to-paper px-6 py-20">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 lg:grid-cols-2">
           <div className="flex flex-col gap-8">
-            <div className="relative aspect-video overflow-hidden rounded-3xl">
+            <div className="relative overflow-hidden rounded-3xl shadow-xl shadow-ink/10">
               <iframe
                 title="Dental Chic Location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3836.9!2d35.0!3d-15.78!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTXCsDQ2JzQ4LjAiSyAzNcKwMDAnMDAuMCJF!5e0!3m2!1sen!2smw!4v1"
                 width="100%"
-                height="100%"
+                height="300"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="absolute inset-0"
+                className="w-full"
               />
             </div>
 
-            <div className="rounded-3xl bg-white p-8">
-              <div className="mb-4 flex items-center gap-2">
-                <ClockIcon size={18} className="text-chic-teal" />
+            <div className="rounded-3xl bg-white p-8 shadow-sm">
+              <div className="mb-5 flex items-center gap-2.5">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-chic-teal/10 text-chic-teal">
+                  <ClockIcon size={18} />
+                </div>
                 <h3 className="font-display text-lg font-medium">Opening Hours</h3>
               </div>
               <div className="flex flex-col gap-3">
                 {hours.map((h) => (
-                  <div key={h.day} className="flex justify-between text-[0.92rem]">
+                  <div key={h.day} className={`flex justify-between rounded-xl px-4 py-3 text-[0.92rem] ${h.highlight ? 'bg-stone/50' : ''}`}>
                     <span className="text-slate">{h.day}</span>
-                    <span className={`font-medium ${h.time === 'Closed' ? 'text-slate/50' : ''}`}>{h.time}</span>
+                    <span className={`font-medium ${h.highlight ? 'text-ink' : 'text-slate/50'}`}>{h.time}</span>
                   </div>
                 ))}
               </div>
             </div>
           </div>
 
-          <div className="rounded-3xl bg-white p-8">
+          <div className="rounded-3xl bg-white p-8 shadow-sm">
             <h3 className="mb-2 font-display text-xl font-medium">Send us a message</h3>
             <p className="mb-6 text-[0.9rem] text-slate">We'll get back to you as soon as possible.</p>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="name" className="mb-1.5 block text-[0.82rem] font-bold">Full Name</label>
-                  <input id="name" name="name" type="text" required placeholder="Your name" className="w-full rounded-xl border-[1.5px] border-stone bg-paper px-4 py-3 text-[0.92rem] focus:border-chic-teal focus:outline-none" />
+                  <label htmlFor="name" className="mb-1.5 block text-[0.82rem] font-bold text-ink">Full Name</label>
+                  <input id="name" name="name" type="text" required placeholder="Your name" className="w-full rounded-xl border-[1.5px] border-stone bg-stone/30 px-4 py-3 text-[0.92rem] transition-colors focus:border-chic-teal focus:bg-white focus:outline-none" />
                 </div>
                 <div>
-                  <label htmlFor="phone" className="mb-1.5 block text-[0.82rem] font-bold">Phone</label>
-                  <input id="phone" name="phone" type="tel" placeholder="Your phone number" className="w-full rounded-xl border-[1.5px] border-stone bg-paper px-4 py-3 text-[0.92rem] focus:border-chic-teal focus:outline-none" />
+                  <label htmlFor="phone" className="mb-1.5 block text-[0.82rem] font-bold text-ink">Phone</label>
+                  <input id="phone" name="phone" type="tel" placeholder="Your phone number" className="w-full rounded-xl border-[1.5px] border-stone bg-stone/30 px-4 py-3 text-[0.92rem] transition-colors focus:border-chic-teal focus:bg-white focus:outline-none" />
                 </div>
               </div>
               <div>
-                <label htmlFor="email" className="mb-1.5 block text-[0.82rem] font-bold">Email</label>
-                <input id="email" name="email" type="email" required placeholder="Your email address" className="w-full rounded-xl border-[1.5px] border-stone bg-paper px-4 py-3 text-[0.92rem] focus:border-chic-teal focus:outline-none" />
+                <label htmlFor="email" className="mb-1.5 block text-[0.82rem] font-bold text-ink">Email</label>
+                <input id="email" name="email" type="email" required placeholder="Your email address" className="w-full rounded-xl border-[1.5px] border-stone bg-stone/30 px-4 py-3 text-[0.92rem] transition-colors focus:border-chic-teal focus:bg-white focus:outline-none" />
               </div>
               <div>
-                <label htmlFor="message" className="mb-1.5 block text-[0.82rem] font-bold">Message</label>
-                <textarea id="message" name="message" rows={4} required placeholder="How can we help you?" className="w-full rounded-xl border-[1.5px] border-stone bg-paper px-4 py-3 text-[0.92rem] focus:border-chic-teal focus:outline-none resize-none" />
+                <label htmlFor="message" className="mb-1.5 block text-[0.82rem] font-bold text-ink">Message</label>
+                <textarea id="message" name="message" rows={4} required placeholder="How can we help you?" className="w-full resize-none rounded-xl border-[1.5px] border-stone bg-stone/30 px-4 py-3 text-[0.92rem] transition-colors focus:border-chic-teal focus:bg-white focus:outline-none" />
               </div>
 
               <button
@@ -159,11 +163,12 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="bg-ink px-6 py-20 text-center text-white">
+      {/* CTA */}
+      <section className="bg-gradient-to-r from-chic-green-deep to-chic-teal px-6 py-20 text-center text-white">
         <div className="mx-auto max-w-xl">
           <h2 className="mb-4 font-display text-[clamp(1.7rem,3vw,2.3rem)] font-medium">Prefer to book directly?</h2>
-          <p className="mb-8 text-white/70">Schedule your appointment online in just a few clicks.</p>
-          <Link to="/book" className="inline-flex items-center gap-2 rounded-full bg-chic-green px-8 py-4 text-base font-bold text-ink transition-all hover:-translate-y-px">
+          <p className="mb-8 text-white/80">Schedule your appointment online in just a few clicks.</p>
+          <Link to="/book" className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-chic-green-deep transition-all hover:-translate-y-px hover:bg-white/90">
             Book an Appointment
           </Link>
         </div>

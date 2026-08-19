@@ -6,14 +6,14 @@ import PageHero from '../components/PageHero';
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
 
 const services = [
-  'General Check-up & Cleaning',
-  'Teeth Whitening',
-  'Braces & Orthodontics',
-  'Crowns & Bridges',
-  'Root Canal Treatment',
-  'Oral Surgery',
-  "Children's Dentistry",
-  'Not sure — advise me',
+  { name: 'General Check-up & Cleaning', icon: '🩺', color: 'from-chic-teal/20 to-chic-green/10' },
+  { name: 'Teeth Whitening', icon: '✨', color: 'from-amber-100/60 to-orange-50/40' },
+  { name: 'Braces & Orthodontics', icon: '🦷', color: 'from-blue-100/60 to-sky-50/40' },
+  { name: 'Crowns & Bridges', icon: '👑', color: 'from-purple-100/60 to-pink-50/40' },
+  { name: 'Root Canal Treatment', icon: '💊', color: 'from-red-100/60 to-rose-50/40' },
+  { name: 'Oral Surgery', icon: '🏥', color: 'from-emerald-100/60 to-teal-50/40' },
+  { name: "Children's Dentistry", icon: '👶', color: 'from-pink-100/60 to-rose-50/40' },
+  { name: 'Not sure — advise me', icon: '💬', color: 'from-stone to-stone/50' },
 ];
 
 const timeSlots = [
@@ -58,17 +58,19 @@ export default function BookPage() {
     return (
       <>
         <PageHero eyebrow="Book Appointment" title="Let's schedule your visit." crumb="Book" />
-        <section className="bg-white px-6 py-24">
+        <section className="bg-paper px-6 py-24">
           <div className="mx-auto max-w-lg text-center">
             <div className="mb-6 flex justify-center">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-chic-green/15"><CheckCircleIcon size={32} className="text-chic-green" /></div>
+              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-chic-green/15 shadow-lg shadow-chic-green/20">
+                <CheckCircleIcon size={36} className="text-chic-green" />
+              </div>
             </div>
             <h2 className="mb-3 font-display text-2xl font-medium">Appointment Request Submitted</h2>
             <p className="mb-3 text-slate">Thank you, {form.name}! We've received your request for <strong>{form.service}</strong> on <strong>{form.date}</strong>.</p>
             <p className="mb-8 text-slate">We'll contact you shortly to confirm your appointment.</p>
             <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
               <Link to="/" className="rounded-full bg-ink px-7 py-3.5 text-sm font-bold text-white transition-all hover:-translate-y-px hover:bg-chic-green-deep">Back to Home</Link>
-              <a href="https://wa.me/265998951880" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full border-[1.5px] border-ink px-7 py-3.5 text-sm font-bold transition-colors hover:bg-ink hover:text-white">
+              <a href="https://wa.me/265998951880" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full border-[1.5px] border-ink px-7 py-3.5 text-sm font-bold text-ink transition-colors hover:bg-ink hover:text-white">
                 <MessageCircleIcon size={16} /> Prefer WhatsApp? Chat with us
               </a>
             </div>
@@ -81,22 +83,23 @@ export default function BookPage() {
   return (
     <>
       <PageHero eyebrow="Book Appointment" title="Let's schedule your visit." crumb="Book" />
-      <section className="bg-white px-6 py-20">
+      <section className="bg-paper px-6 py-20">
         <div className="mx-auto max-w-2xl">
+          {/* Progress bar */}
           <div className="mb-10 flex items-center justify-center gap-3">
             {[1, 2, 3].map((s) => (
               <div key={s} className="flex items-center gap-3">
-                <div className={`flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold transition-colors ${step >= s ? 'bg-chic-teal text-white' : 'bg-stone text-slate'}`}>
+                <div className={`flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold transition-all duration-300 ${step >= s ? 'bg-gradient-to-br from-chic-teal to-chic-green-deep text-white shadow-lg shadow-chic-teal/20' : 'bg-stone text-slate'}`}>
                   {step > s ? <CheckCircleIcon size={18} /> : s}
                 </div>
-                {s < 3 && <div className={`h-0.5 w-12 ${step > s ? 'bg-chic-teal' : 'bg-stone'}`} />}
+                {s < 3 && <div className={`h-0.5 w-14 transition-colors duration-300 ${step > s ? 'bg-chic-teal' : 'bg-stone'}`} />}
               </div>
             ))}
           </div>
 
           <div className="mb-8 text-center">
             <p className="text-[0.78rem] font-bold tracking-wider text-chic-teal uppercase">Step {step} of 3</p>
-            <h2 className="mt-1 font-display text-xl font-medium">
+            <h2 className="mt-1 font-display text-xl font-medium text-ink">
               {step === 1 && 'What do you need?'}
               {step === 2 && 'When would you like to visit?'}
               {step === 3 && 'Your details'}
@@ -106,8 +109,17 @@ export default function BookPage() {
           {step === 1 && (
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               {services.map((s) => (
-                <button key={s} onClick={() => update('service', s)} className={`rounded-2xl border-[1.5px] p-5 text-left transition-all hover:-translate-y-0.5 ${form.service === s ? 'border-chic-teal bg-chic-teal/5 shadow-[0_4px_20px_rgba(44,180,192,0.1)]' : 'border-stone bg-paper hover:border-chic-teal/50'}`}>
-                  <span className="block font-bold">{s}</span>
+                <button
+                  key={s.name}
+                  onClick={() => update('service', s.name)}
+                  className={`group rounded-2xl border-[1.5px] p-5 text-left transition-all duration-300 hover:-translate-y-0.5 ${
+                    form.service === s.name
+                      ? 'border-chic-teal bg-chic-teal/5 shadow-lg shadow-chic-teal/10'
+                      : 'border-stone bg-white hover:border-chic-teal/50 hover:shadow-md'
+                  }`}
+                >
+                  <span className="mb-2 block text-2xl">{s.icon}</span>
+                  <span className="block font-bold text-ink">{s.name}</span>
                 </button>
               ))}
             </div>
@@ -116,14 +128,26 @@ export default function BookPage() {
           {step === 2 && (
             <div className="flex flex-col gap-5">
               <div>
-                <label htmlFor="book-date" className="mb-2 flex items-center gap-2 text-[0.85rem] font-bold"><CalendarIcon size={16} className="text-chic-teal" /> Preferred Date</label>
-                <input id="book-date" type="date" value={form.date} onChange={(e) => update('date', e.target.value)} min={new Date().toISOString().split('T')[0]} required className="w-full rounded-xl border-[1.5px] border-stone bg-paper px-4 py-3.5 text-[0.92rem] focus:border-chic-teal focus:outline-none" />
+                <label htmlFor="book-date" className="mb-2 flex items-center gap-2 text-[0.85rem] font-bold text-ink">
+                  <CalendarIcon size={16} className="text-chic-teal" /> Preferred Date
+                </label>
+                <input id="book-date" type="date" value={form.date} onChange={(e) => update('date', e.target.value)} min={new Date().toISOString().split('T')[0]} required className="w-full rounded-xl border-[1.5px] border-stone bg-white px-4 py-3.5 text-[0.92rem] transition-colors focus:border-chic-teal focus:outline-none" />
               </div>
               <div>
-                <label className="mb-2 flex items-center gap-2 text-[0.85rem] font-bold"><ClockIcon size={16} className="text-chic-teal" /> Preferred Time</label>
+                <label className="mb-2 flex items-center gap-2 text-[0.85rem] font-bold text-ink">
+                  <ClockIcon size={16} className="text-chic-teal" /> Preferred Time
+                </label>
                 <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                   {timeSlots.map((t) => (
-                    <button key={t} onClick={() => update('time', t)} className={`rounded-xl border-[1.5px] px-4 py-3 text-left text-[0.88rem] font-medium transition-all ${form.time === t ? 'border-chic-teal bg-chic-teal/5 text-chic-teal' : 'border-stone bg-paper hover:border-chic-teal/50'}`}>
+                    <button
+                      key={t}
+                      onClick={() => update('time', t)}
+                      className={`rounded-xl border-[1.5px] px-4 py-3 text-left text-[0.88rem] font-medium transition-all duration-200 ${
+                        form.time === t
+                          ? 'border-chic-teal bg-chic-teal/5 text-chic-teal shadow-md shadow-chic-teal/10'
+                          : 'border-stone bg-white text-ink hover:border-chic-teal/50 hover:shadow-sm'
+                      }`}
+                    >
                       {t}
                     </button>
                   ))}
@@ -136,30 +160,36 @@ export default function BookPage() {
             <div className="flex flex-col gap-5">
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="book-name" className="mb-1.5 flex items-center gap-2 text-[0.85rem] font-bold"><UserIcon size={16} className="text-chic-teal" /> Full Name</label>
-                  <input id="book-name" type="text" value={form.name} onChange={(e) => update('name', e.target.value)} required placeholder="Your full name" className="w-full rounded-xl border-[1.5px] border-stone bg-paper px-4 py-3 text-[0.92rem] focus:border-chic-teal focus:outline-none" />
+                  <label htmlFor="book-name" className="mb-1.5 flex items-center gap-2 text-[0.85rem] font-bold text-ink">
+                    <UserIcon size={16} className="text-chic-teal" /> Full Name
+                  </label>
+                  <input id="book-name" type="text" value={form.name} onChange={(e) => update('name', e.target.value)} required placeholder="Your full name" className="w-full rounded-xl border-[1.5px] border-stone bg-white px-4 py-3 text-[0.92rem] transition-colors focus:border-chic-teal focus:outline-none" />
                 </div>
                 <div>
-                  <label htmlFor="book-phone" className="mb-1.5 flex items-center gap-2 text-[0.85rem] font-bold"><PhoneIcon size={16} className="text-chic-teal" /> Phone Number</label>
-                  <input id="book-phone" type="tel" value={form.phone} onChange={(e) => update('phone', e.target.value)} required placeholder="Your phone number" className="w-full rounded-xl border-[1.5px] border-stone bg-paper px-4 py-3 text-[0.92rem] focus:border-chic-teal focus:outline-none" />
+                  <label htmlFor="book-phone" className="mb-1.5 flex items-center gap-2 text-[0.85rem] font-bold text-ink">
+                    <PhoneIcon size={16} className="text-chic-teal" /> Phone Number
+                  </label>
+                  <input id="book-phone" type="tel" value={form.phone} onChange={(e) => update('phone', e.target.value)} required placeholder="Your phone number" className="w-full rounded-xl border-[1.5px] border-stone bg-white px-4 py-3 text-[0.92rem] transition-colors focus:border-chic-teal focus:outline-none" />
                 </div>
               </div>
               <div>
-                <label htmlFor="book-email" className="mb-1.5 block text-[0.85rem] font-bold">Email (optional)</label>
-                <input id="book-email" type="email" value={form.email} onChange={(e) => update('email', e.target.value)} placeholder="Your email address" className="w-full rounded-xl border-[1.5px] border-stone bg-paper px-4 py-3 text-[0.92rem] focus:border-chic-teal focus:outline-none" />
+                <label htmlFor="book-email" className="mb-1.5 block text-[0.85rem] font-bold text-ink">Email (optional)</label>
+                <input id="book-email" type="email" value={form.email} onChange={(e) => update('email', e.target.value)} placeholder="Your email address" className="w-full rounded-xl border-[1.5px] border-stone bg-white px-4 py-3 text-[0.92rem] transition-colors focus:border-chic-teal focus:outline-none" />
               </div>
               <div>
-                <label htmlFor="book-message" className="mb-1.5 flex items-center gap-2 text-[0.85rem] font-bold"><MessageCircleIcon size={16} className="text-chic-teal" /> Message (optional)</label>
-                <textarea id="book-message" rows={3} value={form.message} onChange={(e) => update('message', e.target.value)} placeholder="Any specific concerns or notes?" className="w-full rounded-xl border-[1.5px] border-stone bg-paper px-4 py-3 text-[0.92rem] focus:border-chic-teal focus:outline-none resize-none" />
+                <label htmlFor="book-message" className="mb-1.5 flex items-center gap-2 text-[0.85rem] font-bold text-ink">
+                  <MessageCircleIcon size={16} className="text-chic-teal" /> Message (optional)
+                </label>
+                <textarea id="book-message" rows={3} value={form.message} onChange={(e) => update('message', e.target.value)} placeholder="Any specific concerns or notes?" className="w-full resize-none rounded-xl border-[1.5px] border-stone bg-white px-4 py-3 text-[0.92rem] transition-colors focus:border-chic-teal focus:outline-none" />
               </div>
-              <div className="rounded-2xl border border-stone bg-stone/30 p-5">
-                <p className="mb-2 text-[0.78rem] font-bold tracking-wider text-chic-teal uppercase">Booking Summary</p>
-                <div className="flex flex-col gap-1.5 text-[0.9rem]">
-                  <span><strong>Service:</strong> {form.service}</span>
-                  <span><strong>Date:</strong> {form.date}</span>
-                  <span><strong>Time:</strong> {form.time}</span>
-                  <span><strong>Name:</strong> {form.name}</span>
-                  <span><strong>Phone:</strong> {form.phone}</span>
+              <div className="rounded-2xl border border-stone bg-gradient-to-br from-stone/50 to-white p-5">
+                <p className="mb-3 text-[0.78rem] font-bold tracking-wider text-chic-teal uppercase">Booking Summary</p>
+                <div className="flex flex-col gap-2 text-[0.9rem]">
+                  <span className="flex justify-between"><strong className="text-slate">Service:</strong> <span className="text-ink">{form.service}</span></span>
+                  <span className="flex justify-between"><strong className="text-slate">Date:</strong> <span className="text-ink">{form.date}</span></span>
+                  <span className="flex justify-between"><strong className="text-slate">Time:</strong> <span className="text-ink">{form.time}</span></span>
+                  <span className="flex justify-between"><strong className="text-slate">Name:</strong> <span className="text-ink">{form.name}</span></span>
+                  <span className="flex justify-between"><strong className="text-slate">Phone:</strong> <span className="text-ink">{form.phone}</span></span>
                 </div>
               </div>
             </div>
@@ -169,7 +199,7 @@ export default function BookPage() {
 
           <div className="mt-8 flex items-center justify-between">
             {step > 1 ? (
-              <button onClick={() => setStep((s) => s - 1)} className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-stone px-6 py-3 text-sm font-bold transition-colors hover:border-ink">
+              <button onClick={() => setStep((s) => s - 1)} className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-stone px-6 py-3 text-sm font-bold text-ink transition-colors hover:border-ink hover:bg-white">
                 <ArrowLeftIcon size={16} /> Back
               </button>
             ) : <div />}
@@ -178,7 +208,7 @@ export default function BookPage() {
                 Next <ArrowRightIcon size={16} />
               </button>
             ) : (
-              <button onClick={handleSubmit} disabled={!canNext() || status === 'sending'} className="inline-flex items-center gap-2 rounded-full bg-chic-green px-7 py-3.5 text-sm font-bold text-ink transition-all hover:-translate-y-px disabled:opacity-50">
+              <button onClick={handleSubmit} disabled={!canNext() || status === 'sending'} className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-chic-green-deep to-chic-teal px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-chic-teal/20 transition-all hover:-translate-y-px disabled:opacity-50">
                 {status === 'sending' ? 'Submitting...' : 'Confirm Booking'} <CheckCircleIcon size={16} />
               </button>
             )}
@@ -186,7 +216,7 @@ export default function BookPage() {
 
           <div className="mt-8 text-center">
             <p className="text-[0.82rem] text-slate">Prefer WhatsApp?</p>
-            <a href="https://wa.me/265998951880" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-chic-green-deep hover:underline">
+            <a href="https://wa.me/265998951880" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-chic-green-deep hover:text-chic-teal hover:underline">
               <MessageCircleIcon size={15} /> Chat with us directly
             </a>
           </div>

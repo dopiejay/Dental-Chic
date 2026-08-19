@@ -3,12 +3,12 @@ import { StethoscopeIcon, SparklesIcon, SyringeIcon, ScanLineIcon, BabyIcon, Wre
 import PageHero from '../components/PageHero';
 
 const services = [
-  { icon: StethoscopeIcon, title: 'General Dentistry', desc: 'Routine dental care and preventive treatment — check-ups, cleanings, and fillings that keep small problems from becoming big ones.' },
-  { icon: SparklesIcon, title: 'Cosmetic Dentistry', desc: "Enhance the appearance of your smile with veneers, whitening, and full smile makeovers — Dr. Yusuf's specialist focus." },
-  { icon: SyringeIcon, title: 'Orthodontics', desc: 'Straighter teeth and improved alignment with fixed and aligner braces, for children and adults, tracked visit by visit.' },
-  { icon: WrenchIcon, title: 'Crowns & Bridges', desc: 'Zirconia and E-max restorations built to match your natural bite and shade.' },
-  { icon: BabyIcon, title: "Children's Dentistry", desc: 'Gentle care designed for younger patients in a comfortable environment.' },
-  { icon: ScanLineIcon, title: 'Digital X-Ray', desc: 'Modern, on-site diagnostic imaging for faster and more accurate diagnosis — no separate referral needed.' },
+  { icon: StethoscopeIcon, title: 'General Dentistry', desc: 'Routine dental care and preventive treatment — check-ups, cleanings, and fillings that keep small problems from becoming big ones.', color: 'from-chic-teal/20 to-chic-green/10', iconColor: 'text-chic-teal bg-chic-teal/10', img: 'https://images.pexels.com/photos/3952017/pexels-photo-3952017.jpeg?auto=compress&cs=tinysrgb&w=400' },
+  { icon: SparklesIcon, title: 'Cosmetic Dentistry', desc: "Enhance the appearance of your smile with veneers, whitening, and full smile makeovers — Dr. Yusuf's specialist focus.", color: 'from-amber-100/60 to-orange-50/40', iconColor: 'text-amber-600 bg-amber-100/60', img: 'https://images.pexels.com/photos/3881417/pexels-photo-3881417.jpeg?auto=compress&cs=tinysrgb&w=400' },
+  { icon: SyringeIcon, title: 'Orthodontics', desc: 'Straighter teeth and improved alignment with fixed and aligner braces, for children and adults, tracked visit by visit.', color: 'from-blue-100/60 to-sky-50/40', iconColor: 'text-blue-600 bg-blue-100/60', img: 'https://images.pexels.com/photos/6627353/pexels-photo-6627353.jpeg?auto=compress&cs=tinysrgb&w=400' },
+  { icon: WrenchIcon, title: 'Crowns & Bridges', desc: 'Zirconia and E-max restorations built to match your natural bite and shade.', color: 'from-purple-100/60 to-pink-50/40', iconColor: 'text-purple-600 bg-purple-100/60', img: 'https://images.pexels.com/photos/4269946/pexels-photo-4269946.jpeg?auto=compress&cs=tinysrgb&w=400' },
+  { icon: BabyIcon, title: "Children's Dentistry", desc: 'Gentle care designed for younger patients in a comfortable environment.', color: 'from-pink-100/60 to-rose-50/40', iconColor: 'text-pink-600 bg-pink-100/60', img: 'https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=400' },
+  { icon: ScanLineIcon, title: 'Digital X-Ray', desc: 'Modern, on-site diagnostic imaging for faster and more accurate diagnosis — no separate referral needed.', color: 'from-emerald-100/60 to-teal-50/40', iconColor: 'text-emerald-600 bg-emerald-100/60', img: 'https://images.pexels.com/photos/4270379/pexels-photo-4270379.jpeg?auto=compress&cs=tinysrgb&w=400' },
 ];
 
 export default function ServicesPage() {
@@ -23,33 +23,49 @@ export default function ServicesPage() {
             return (
               <article
                 key={s.title}
-                className="flex flex-col rounded-3xl border border-stone bg-paper p-8 transition-all hover:-translate-y-1 hover:border-chic-teal"
+                className={`group relative overflow-hidden rounded-3xl border border-stone/80 bg-gradient-to-br ${s.color} transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-chic-teal/5`}
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-chic-teal/10 text-chic-teal">
-                  <Icon size={24} />
+                {/* Service image */}
+                <div className="relative h-44 overflow-hidden">
+                  <img
+                    src={s.img}
+                    alt={s.title}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                  <div className={`absolute bottom-3 left-3 flex h-10 w-10 items-center justify-center rounded-xl ${s.iconColor} shadow-lg`}>
+                    <Icon size={20} />
+                  </div>
                 </div>
-                <h3 className="mb-2 font-display text-[1.2rem] font-medium">{s.title}</h3>
-                <p className="mb-6 flex-1 text-[0.92rem] text-slate">{s.desc}</p>
-                <Link to="/book" className="inline-flex items-center gap-1.5 text-sm font-bold text-chic-green-deep hover:underline">
-                  Book This Service →
-                </Link>
+
+                <div className="relative z-10 p-6">
+                  <h3 className="mb-2 font-display text-[1.15rem] font-medium text-ink">{s.title}</h3>
+                  <p className="mb-5 flex-1 text-[0.9rem] text-slate leading-relaxed">{s.desc}</p>
+                  <Link
+                    to="/book"
+                    className="inline-flex items-center gap-1.5 text-sm font-bold text-chic-green-deep transition-colors group-hover:text-chic-teal"
+                  >
+                    Book This Service <span className="transition-transform group-hover:translate-x-1">→</span>
+                  </Link>
+                </div>
               </article>
             );
           })}
         </div>
       </section>
 
-      <section className="bg-ink px-6 py-20 text-center text-white">
+      <section className="bg-gradient-to-r from-chic-green-deep to-chic-teal px-6 py-20 text-center text-white">
         <div className="mx-auto max-w-xl">
           <h2 className="mb-4 font-display text-[clamp(1.7rem,3vw,2.3rem)] font-medium">
             Not sure which service you need?
           </h2>
-          <p className="mb-8 text-white/70">
+          <p className="mb-8 text-white/80">
             Book a consultation and we&apos;ll recommend the right treatment for you.
           </p>
           <Link
             to="/book"
-            className="inline-flex items-center gap-2 rounded-full bg-chic-green px-8 py-4 text-base font-bold text-ink transition-all hover:-translate-y-px"
+            className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-chic-green-deep transition-all hover:-translate-y-px hover:bg-white/90"
           >
             <CalendarIcon size={18} />
             Book an Appointment

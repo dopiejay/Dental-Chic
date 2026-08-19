@@ -1,105 +1,111 @@
 import { Link } from 'react-router-dom';
-import { CalendarIcon, CheckCircleIcon, MonitorIcon, ClockIcon } from './Icons';
+import { PhoneIcon, CalendarIcon, MessageCircleIcon } from './Icons';
+
+const heroImage = 'https://images.pexels.com/photos/3845981/pexels-photo-3845981.jpeg?auto=compress&cs=tinysrgb&w=800';
 
 export default function Hero() {
   return (
-    <section id="top" className="pt-18 pb-16">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-[1.05fr_0.95fr]">
-        <div>
-          <p className="mb-3 text-[0.8rem] font-bold tracking-[0.14em] text-chic-green-deep uppercase">
-            Kidney Crescent, Blantyre &nbsp;·&nbsp; Est. 2013
+    <section className="relative overflow-hidden bg-gradient-to-br from-chic-teal via-chic-green-deep to-chic-teal">
+      {/* Background image with overlay */}
+      <div className="absolute inset-0">
+        <img
+          src={heroImage}
+          alt=""
+          className="h-full w-full object-cover opacity-20 mix-blend-overlay"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/50 to-transparent" />
+      </div>
+
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 pt-24 pb-20 lg:grid-cols-[1fr_400px]">
+        {/* Left: Copy */}
+        <div className="relative z-10">
+          <p className="mb-3 text-[0.8rem] font-bold tracking-[0.14em] text-chic-green uppercase">
+            Professional dental care in Blantyre
           </p>
-          <h1 className="font-display text-[clamp(2.6rem,5vw,4.2rem)] leading-[1.04] font-medium tracking-tight">
-            Where beautiful
-            <br />
-            <span className="font-display text-chic-teal italic">smiles</span> begin.
+          <h1 className="mb-5 font-display text-[clamp(2.4rem,5vw,3.8rem)] font-medium leading-[1.1] text-white">
+            Your smile, our<br />
+            <span className="italic text-chic-green">passion.</span>
           </h1>
-          <p className="mt-5 mb-8 max-w-md text-lg text-slate">
-            Professional, compassionate dental care designed around your comfort, health and
-            confidence. General dentistry, cosmetic treatments, and orthodontics from Dr. Shabana
-            Yusuf and the Dental Chic team.
+          <p className="mb-8 max-w-lg text-[1.05rem] text-white/70">
+            General, cosmetic, and orthodontic dental care in Blantyre — gentle technique, current
+            materials, and a family-friendly clinic built around you.
           </p>
 
-          <div className="mb-11 flex flex-wrap gap-3.5">
+          <div className="flex flex-wrap gap-3">
             <Link
               to="/book"
-              className="inline-flex items-center gap-2 rounded-full bg-ink px-7.5 py-4 text-base font-bold text-white transition-all hover:-translate-y-px hover:bg-chic-green-deep"
+              className="inline-flex items-center gap-2 rounded-full bg-chic-green px-7 py-4 text-sm font-bold text-ink transition-all hover:-translate-y-0.5 hover:bg-white hover:text-chic-green-deep"
             >
-              <CalendarIcon size={18} />
-              Book an Appointment
+              <CalendarIcon size={16} />
+              Book an appointment
             </Link>
-            <Link
-              to="/services"
-              className="rounded-full border-[1.5px] border-ink px-7.5 py-4 text-base font-bold transition-colors hover:bg-ink hover:text-white"
+            <a
+              href="tel:+265998951880"
+              className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-white/30 px-7 py-4 text-sm font-bold text-white transition-colors hover:border-white hover:bg-white/10"
             >
-              Explore Our Services
-            </Link>
+              <PhoneIcon size={16} />
+              Call the clinic
+            </a>
           </div>
 
-          <div className="flex items-center gap-5">
-            <Trust icon={<CheckCircleIcon size={16} className="text-chic-green" />} value="Experienced" label="Dental Professionals" />
-            <div className="h-8 w-px bg-stone" />
-            <Trust icon={<MonitorIcon size={16} className="text-chic-green" />} value="Modern" label="Dental Care" />
-            <div className="h-8 w-px bg-stone" />
-            <Trust icon={<ClockIcon size={16} className="text-chic-green" />} value="12+" label="Years in Practice" />
+          <div className="mt-8 flex flex-wrap items-center gap-6 text-[0.82rem] text-white/60">
+            <span className="flex items-center gap-2">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-chic-green" />
+              Since 2013
+            </span>
+            <span className="flex items-center gap-2">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-chic-green" />
+              Digital X-Ray
+            </span>
+            <span className="flex items-center gap-2">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-chic-green" />
+              Kidney Crescent, Blantyre
+            </span>
           </div>
         </div>
 
-        <div className="relative mx-auto aspect-square w-full max-w-[420px]" aria-hidden="true">
-          <svg className="absolute inset-0 text-ink" viewBox="0 0 520 520" width="100%" height="100%">
-            <circle cx="260" cy="260" r="210" fill="none" stroke="#EDEEEA" strokeWidth="1.5" />
-            <path
-              className="draw-arc"
-              d="M90 300 Q260 430 430 300"
-              fill="none"
-              stroke="#5FBF4D"
-              strokeWidth="3"
-              strokeLinecap="round"
-            />
-            <path
-              className="draw-arc arc-teal"
-              d="M120 200 Q260 90 400 200"
-              fill="none"
-              stroke="#2CB4C0"
-              strokeWidth="3"
-              strokeLinecap="round"
-            />
-            <g transform="translate(160,150)">
-              <path
-                d="M100 6c-20 0-30 10-40 10s-15-5-25-5c-15 0-20 15-20 30 0 30 15 50 20 80 3 15 8 25 17 25 10 0 10-20 15-40 3-13 7-20 13-20s10 7 13 20c5 20 5 40 15 40 9 0 14-10 17-25 5-30 20-50 20-80 0-15-5-30-20-30-10 0-15 5-25 5s-20-10-40-10z"
-                fill="none"
-                stroke="#1B1F1D"
-                strokeWidth="3.5"
-                strokeLinejoin="round"
-              />
-            </g>
-          </svg>
-          <div className="absolute bottom-[6%] left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full border border-stone bg-white px-4.5 py-2.5 text-sm font-bold shadow-[0_10px_30px_rgba(27,31,29,0.06)]">
-            <span className="h-2 w-2 rounded-full bg-chic-green" />
-            Accepting RESMAID scheme
+        {/* Right: Floating cards */}
+        <div className="relative hidden lg:block">
+          <div className="relative z-10 rounded-3xl bg-white/10 p-6 backdrop-blur-md">
+            <div className="mb-4 flex items-center gap-3">
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-chic-green text-ink">
+                <PhoneIcon size={18} />
+              </div>
+              <div>
+                <p className="text-[0.78rem] text-white/60">Need an appointment?</p>
+                <p className="font-bold text-white">Call +265 998 95 18 80</p>
+              </div>
+            </div>
+            <p className="mb-4 rounded-2xl bg-white/5 p-3.5 text-[0.82rem] text-white/70">
+              <span className="font-bold text-chic-green">Accepting RESMAID scheme</span> — ask
+              us about your coverage at your next visit.
+            </p>
+            <a
+              href="https://wa.me/265998951880"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-chic-green px-6 py-3 text-sm font-bold text-ink transition-all hover:bg-white hover:text-chic-green-deep"
+            >
+              <MessageCircleIcon size={16} />
+              Chat on WhatsApp
+            </a>
           </div>
 
-          <div className="absolute top-[6%] -right-2 hidden w-52 rounded-2xl border border-stone bg-white p-4 shadow-[0_16px_40px_rgba(27,31,29,0.08)] sm:block">
-            <p className="mb-1 text-[0.8rem] font-bold">Need an appointment?</p>
-            <p className="mb-3 text-[0.76rem] text-slate">Choose a convenient time with our team.</p>
-            <Link to="/book" className="text-[0.78rem] font-bold text-chic-green-deep hover:underline">
-              Book Now →
-            </Link>
-          </div>
+          {/* Decorative floating element */}
+          <div className="absolute -top-4 -right-4 h-24 w-24 rounded-full bg-chic-green/20 blur-2xl" />
+          <div className="absolute -bottom-6 -left-6 h-32 w-32 rounded-full bg-chic-teal/20 blur-3xl" />
         </div>
       </div>
-    </section>
-  );
-}
 
-function Trust({ icon, value, label }) {
-  return (
-    <div className="flex flex-col">
-      <span className="mb-0.5 flex items-center gap-1.5">
-        {icon}
-        <strong className="font-display text-[1.1rem]">{value}</strong>
-      </span>
-      <span className="text-[0.78rem] text-slate">{label}</span>
-    </div>
+      {/* Wave divider */}
+      <div className="absolute bottom-0 left-0 right-0">
+        <svg viewBox="0 0 1440 80" fill="none" className="w-full">
+          <path
+            d="M0 60C240 20 480 0 720 20C960 40 1200 60 1440 40V80H0V60Z"
+            fill="#FAFAF9"
+          />
+        </svg>
+      </div>
+    </section>
   );
 }

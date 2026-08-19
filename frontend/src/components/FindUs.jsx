@@ -15,22 +15,22 @@ export default function FindUs() {
           <p className="mb-3 text-[0.8rem] font-bold tracking-[0.14em] text-chic-green-deep uppercase">Visit the clinic</p>
           <h2 className="mb-6 font-display text-[clamp(1.8rem,3vw,2.4rem)] font-medium">Find us on Kidney Crescent</h2>
 
-          <ul className="mb-7 flex flex-col gap-3.5">
+          <ul className="mb-7 flex flex-col gap-4">
             {details.map((d) => {
               const Icon = d.icon;
               const content = (
-                <li key={d.label} className="flex items-start gap-3">
-                  <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-chic-teal/10 text-chic-teal">
-                    <Icon size={16} />
+                <li key={d.label} className="flex items-start gap-3.5">
+                  <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-chic-teal/10 text-chic-teal transition-colors group-hover:bg-chic-teal group-hover:text-white">
+                    <Icon size={18} />
                   </div>
                   <div className="flex flex-col gap-0.5">
-                    <strong className="text-[0.78rem] font-normal tracking-[0.08em] text-slate uppercase">{d.label}</strong>
-                    <span className="font-bold">{d.value}</span>
+                    <strong className="text-[0.75rem] font-normal tracking-[0.1em] text-slate/70 uppercase">{d.label}</strong>
+                    <span className="font-bold text-ink">{d.value}</span>
                   </div>
                 </li>
               );
               return d.href ? (
-                <a key={d.label} href={d.href} className="transition-opacity hover:opacity-80">
+                <a key={d.label} href={d.href} className="group transition-opacity hover:opacity-80">
                   {content}
                 </a>
               ) : content;
@@ -49,7 +49,7 @@ export default function FindUs() {
             </a>
             <a
               href="tel:+265998951880"
-              className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-ink px-6 py-3.5 text-sm font-bold transition-colors hover:bg-ink hover:text-white"
+              className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-ink px-6 py-3.5 text-sm font-bold text-ink transition-colors hover:bg-ink hover:text-white"
             >
               <PhoneIcon size={16} />
               Call the clinic
@@ -57,17 +57,17 @@ export default function FindUs() {
           </div>
         </div>
 
-        <div className="relative aspect-4/3 overflow-hidden rounded-3xl">
+        <div className="relative overflow-hidden rounded-3xl shadow-xl shadow-ink/10">
           <iframe
             title="Dental Chic Location"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3836.9!2d35.0!3d-15.78!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTXCsDQ2JzQ4LjAiSyAzNcKwMDAnMDAuMCJF!5e0!3m2!1sen!2smw!4v1"
             width="100%"
-            height="100%"
+            height="400"
             style={{ border: 0 }}
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            className="absolute inset-0"
+            className="w-full"
           />
         </div>
       </div>
