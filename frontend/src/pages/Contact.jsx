@@ -58,7 +58,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <PageHero eyebrow="Get in touch" title="We're here to help you smile." crumb="Contact" />
+      <PageHero eyebrow="Get in touch" title="We're here to help you smile." crumb="Contact" image="https://images.pexels.com/photos/4269946/pexels-photo-4269946.jpeg?auto=compress&cs=tinysrgb&w=800" />
 
       {/* Contact Cards */}
       <section className="bg-white px-6 py-20">

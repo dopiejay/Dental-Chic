@@ -5,15 +5,16 @@ const heroImage = 'https://images.pexels.com/photos/3845981/pexels-photo-3845981
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-chic-teal via-chic-green-deep to-chic-teal">
-      {/* Background image with overlay */}
+    <section className="relative overflow-hidden bg-ink">
+      {/* Background image with dark overlay */}
       <div className="absolute inset-0">
         <img
           src={heroImage}
           alt=""
-          className="h-full w-full object-cover opacity-20 mix-blend-overlay"
+          className="h-full w-full object-cover opacity-30"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-ink/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ink/20 to-ink/60" />
       </div>
 
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 pt-24 pb-20 lg:grid-cols-[1fr_400px]">

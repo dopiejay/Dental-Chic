@@ -1,21 +1,26 @@
 import { Link } from 'react-router-dom';
 
-export default function PageHero({ eyebrow, title, crumb }) {
+export default function PageHero({ eyebrow, title, crumb, image }) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-ink via-chic-teal/20 to-ink px-6 py-20 text-center text-white">
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-1/4 h-64 w-64 rounded-full bg-chic-teal/10 blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 h-48 w-48 rounded-full bg-chic-green/10 blur-3xl" />
-      <div className="absolute inset-0 opacity-[0.04]">
-        <svg width="100%" height="100%">
-          <defs>
-            <pattern id="hero-dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="1" fill="white" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#hero-dots)" />
-        </svg>
-      </div>
+    <section className="relative overflow-hidden bg-ink px-6 py-20 text-center text-white">
+      {/* Background image with dark overlay */}
+      {image && (
+        <div className="absolute inset-0">
+          <img
+            src={image}
+            alt=""
+            className="h-full w-full object-cover opacity-30"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-ink via-ink/70 to-ink/90" />
+          <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-transparent to-ink/80" />
+        </div>
+      )}
+      {/* Fallback gradient if no image */}
+      {!image && (
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-ink via-chic-teal/20 to-chic-green-deep/20" />
+        </div>
+      )}
 
       <div className="relative z-10 mx-auto max-w-3xl">
         <nav className="mb-4 text-[0.78rem] text-white/50">

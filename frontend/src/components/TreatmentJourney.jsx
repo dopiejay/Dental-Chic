@@ -9,7 +9,7 @@ const steps = [
 
 export default function TreatmentJourney() {
   return (
-    <section className="bg-white px-6 py-24">
+    <section className="bg-stone px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <div className="mb-14 text-center">
           <p className="mb-3 text-[0.8rem] font-bold tracking-[0.14em] text-chic-green-deep uppercase">How it works</p>
@@ -18,33 +18,22 @@ export default function TreatmentJourney() {
           </h2>
         </div>
 
-        <div className="relative">
+        <div className="relative flex flex-col items-center justify-between gap-8 sm:flex-row sm:items-start sm:gap-4">
           {/* Connecting line */}
-          <div className="absolute top-16 left-0 right-0 hidden h-0.5 bg-gradient-to-r from-chic-teal/20 via-chic-teal/40 to-chic-teal/20 lg:block" />
+          <div className="absolute top-7 left-0 right-0 hidden h-[2px] bg-gradient-to-r from-chic-teal/10 via-chic-teal/30 to-chic-teal/10 sm:block" />
 
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map((step, i) => {
-              const Icon = step.icon;
-              return (
-                <div key={step.num} className="relative group">
-                  {/* Step number badge */}
-                  <div className="mb-5 flex items-center gap-4">
-                    <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-chic-teal to-chic-green-deep text-white shadow-lg shadow-chic-teal/20 transition-transform group-hover:scale-110">
-                      <Icon size={24} />
-                      <span className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-ink text-[0.65rem] font-bold text-white">
-                        {step.num}
-                      </span>
-                    </div>
-                    {i < steps.length - 1 && (
-                      <div className="hidden h-0.5 flex-1 bg-gradient-to-r from-chic-teal/30 to-transparent lg:block" />
-                    )}
-                  </div>
-                  <h3 className="mb-2 font-display text-xl font-medium text-ink">{step.title}</h3>
-                  <p className="text-[0.9rem] text-slate leading-relaxed">{step.desc}</p>
+          {steps.map((step, i) => {
+            const Icon = step.icon;
+            return (
+              <div key={step.num} className="relative flex flex-1 flex-col items-center text-center">
+                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border-[3px] border-chic-teal bg-white text-chic-teal transition-transform hover:scale-110 hover:bg-chic-teal hover:text-white">
+                  <Icon size={24} />
                 </div>
-              );
-            })}
-          </div>
+                <h3 className="mb-2 font-display text-lg font-medium text-ink">{step.title}</h3>
+                <p className="text-[0.88rem] text-slate leading-relaxed">{step.desc}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

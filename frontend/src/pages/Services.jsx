@@ -14,7 +14,7 @@ const services = [
 export default function ServicesPage() {
   return (
     <>
-      <PageHero eyebrow="What we treat" title="Dental care for every stage of your smile." crumb="Services" />
+      <PageHero eyebrow="What we treat" title="Dental care for every stage of your smile." crumb="Services" image="https://images.pexels.com/photos/3952017/pexels-photo-3952017.jpeg?auto=compress&cs=tinysrgb&w=800" />
 
       <section className="bg-white px-6 py-24">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

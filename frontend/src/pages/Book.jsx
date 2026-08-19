@@ -6,14 +6,14 @@ import PageHero from '../components/PageHero';
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
 
 const services = [
-  { name: 'General Check-up & Cleaning', icon: '🩺', color: 'from-chic-teal/20 to-chic-green/10' },
-  { name: 'Teeth Whitening', icon: '✨', color: 'from-amber-100/60 to-orange-50/40' },
-  { name: 'Braces & Orthodontics', icon: '🦷', color: 'from-blue-100/60 to-sky-50/40' },
-  { name: 'Crowns & Bridges', icon: '👑', color: 'from-purple-100/60 to-pink-50/40' },
-  { name: 'Root Canal Treatment', icon: '💊', color: 'from-red-100/60 to-rose-50/40' },
-  { name: 'Oral Surgery', icon: '🏥', color: 'from-emerald-100/60 to-teal-50/40' },
-  { name: "Children's Dentistry", icon: '👶', color: 'from-pink-100/60 to-rose-50/40' },
-  { name: 'Not sure — advise me', icon: '💬', color: 'from-stone to-stone/50' },
+  'General Check-up & Cleaning',
+  'Teeth Whitening',
+  'Braces & Orthodontics',
+  'Crowns & Bridges',
+  'Root Canal Treatment',
+  'Oral Surgery',
+  "Children's Dentistry",
+  'Not sure — advise me',
 ];
 
 const timeSlots = [
@@ -57,7 +57,7 @@ export default function BookPage() {
   if (status === 'sent') {
     return (
       <>
-        <PageHero eyebrow="Book Appointment" title="Let's schedule your visit." crumb="Book" />
+        <PageHero eyebrow="Book Appointment" title="Let's schedule your visit." crumb="Book" image="https://images.pexels.com/photos/6627353/pexels-photo-6627353.jpeg?auto=compress&cs=tinysrgb&w=800" />
         <section className="bg-paper px-6 py-24">
           <div className="mx-auto max-w-lg text-center">
             <div className="mb-6 flex justify-center">
@@ -82,17 +82,21 @@ export default function BookPage() {
 
   return (
     <>
-      <PageHero eyebrow="Book Appointment" title="Let's schedule your visit." crumb="Book" />
+        <PageHero eyebrow="Book Appointment" title="Let's schedule your visit." crumb="Book" image="https://images.pexels.com/photos/6627353/pexels-photo-6627353.jpeg?auto=compress&cs=tinysrgb&w=800" />
       <section className="bg-paper px-6 py-20">
         <div className="mx-auto max-w-2xl">
           {/* Progress bar */}
           <div className="mb-10 flex items-center justify-center gap-3">
             {[1, 2, 3].map((s) => (
               <div key={s} className="flex items-center gap-3">
-                <div className={`flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold transition-all duration-300 ${step >= s ? 'bg-gradient-to-br from-chic-teal to-chic-green-deep text-white shadow-lg shadow-chic-teal/20' : 'bg-stone text-slate'}`}>
+                <div className={`flex h-10 w-10 items-center justify-center rounded-full border-[2px] text-sm font-bold transition-all duration-300 ${
+                  step >= s
+                    ? 'border-chic-teal bg-chic-teal text-white'
+                    : 'border-stone bg-white text-slate'
+                }`}>
                   {step > s ? <CheckCircleIcon size={18} /> : s}
                 </div>
-                {s < 3 && <div className={`h-0.5 w-14 transition-colors duration-300 ${step > s ? 'bg-chic-teal' : 'bg-stone'}`} />}
+                {s < 3 && <div className={`h-[2px] w-14 transition-colors duration-300 ${step > s ? 'bg-chic-teal' : 'bg-stone'}`} />}
               </div>
             ))}
           </div>
@@ -110,16 +114,15 @@ export default function BookPage() {
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               {services.map((s) => (
                 <button
-                  key={s.name}
-                  onClick={() => update('service', s.name)}
-                  className={`group rounded-2xl border-[1.5px] p-5 text-left transition-all duration-300 hover:-translate-y-0.5 ${
-                    form.service === s.name
+                  key={s}
+                  onClick={() => update('service', s)}
+                  className={`rounded-2xl border-[1.5px] p-5 text-left transition-all duration-300 hover:-translate-y-0.5 ${
+                    form.service === s
                       ? 'border-chic-teal bg-chic-teal/5 shadow-lg shadow-chic-teal/10'
                       : 'border-stone bg-white hover:border-chic-teal/50 hover:shadow-md'
                   }`}
                 >
-                  <span className="mb-2 block text-2xl">{s.icon}</span>
-                  <span className="block font-bold text-ink">{s.name}</span>
+                  <span className="block font-bold text-ink">{s}</span>
                 </button>
               ))}
             </div>
@@ -208,7 +211,7 @@ export default function BookPage() {
                 Next <ArrowRightIcon size={16} />
               </button>
             ) : (
-              <button onClick={handleSubmit} disabled={!canNext() || status === 'sending'} className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-chic-green-deep to-chic-teal px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-chic-teal/20 transition-all hover:-translate-y-px disabled:opacity-50">
+              <button onClick={handleSubmit} disabled={!canNext() || status === 'sending'} className="inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-bold text-white transition-all hover:-translate-y-px hover:bg-chic-green-deep disabled:opacity-50">
                 {status === 'sending' ? 'Submitting...' : 'Confirm Booking'} <CheckCircleIcon size={16} />
               </button>
             )}

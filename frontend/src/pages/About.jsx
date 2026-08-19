@@ -16,7 +16,7 @@ const approach = ['Listen', 'Diagnose', 'Treat', 'Follow Up'];
 export default function AboutPage() {
   return (
     <>
-      <PageHero eyebrow="Our story" title="Care that puts you first." crumb="About Us" />
+      <PageHero eyebrow="Our story" title="Care that puts you first." crumb="About Us" image="https://images.pexels.com/photos/3845729/pexels-photo-3845729.jpeg?auto=compress&cs=tinysrgb&w=800" />
 
       {/* Story Section */}
       <section className="bg-paper px-6 py-24">
