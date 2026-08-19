@@ -1,12 +1,12 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Wordmark from './Wordmark';
 
 const links = [
-  { href: '#services', label: 'Services' },
-  { href: '#about', label: 'About' },
-  { href: '#team', label: 'Team' },
-  { href: '#reviews', label: 'Reviews' },
-  { href: '#find-us', label: 'Find Us' },
+  { to: '/services', label: 'Services' },
+  { to: '/about', label: 'About Us' },
+  { to: '/#reviews', label: 'Reviews' },
+  { to: '/#find-us', label: 'Find Us' },
 ];
 
 export default function Navbar() {
@@ -21,9 +21,9 @@ export default function Navbar() {
 
         <nav aria-label="Primary" className="hidden gap-7 text-[0.92rem] font-semibold md:flex">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="opacity-75 transition-opacity hover:opacity-100">
+            <Link key={l.to} to={l.to} className="opacity-75 transition-opacity hover:opacity-100">
               {l.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -36,12 +36,12 @@ export default function Navbar() {
           >
             WhatsApp Us
           </a>
-          <a
-            href="#book"
+          <Link
+            to="/#book"
             className="rounded-full bg-ink px-5 py-3 text-sm font-bold text-white transition-all hover:-translate-y-px hover:bg-chic-green-deep"
           >
             Book Appointment
-          </a>
+          </Link>
         </div>
 
         <button
@@ -59,16 +59,16 @@ export default function Navbar() {
       {open && (
         <div className="flex flex-col gap-4 border-b border-stone bg-paper px-6 pb-6 md:hidden">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="font-semibold" onClick={() => setOpen(false)}>
+            <Link key={l.to} to={l.to} className="font-semibold" onClick={() => setOpen(false)}>
               {l.label}
-            </a>
+            </Link>
           ))}
           <a href="https://wa.me/265998951880" className="rounded-full bg-stone px-5 py-3 text-center text-sm font-bold">
             WhatsApp Us
           </a>
-          <a href="#book" className="rounded-full bg-ink px-5 py-3 text-center text-sm font-bold text-white" onClick={() => setOpen(false)}>
+          <Link to="/#book" className="rounded-full bg-ink px-5 py-3 text-center text-sm font-bold text-white" onClick={() => setOpen(false)}>
             Book Appointment
-          </a>
+          </Link>
         </div>
       )}
     </header>

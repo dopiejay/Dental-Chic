@@ -1,11 +1,11 @@
+import { Link } from 'react-router-dom';
 import Wordmark from './Wordmark';
 
 const links = [
-  { href: '#services', label: 'Services' },
-  { href: '#about', label: 'About' },
-  { href: '#team', label: 'Team' },
-  { href: '#book', label: 'Book' },
-  { href: '#find-us', label: 'Find Us' },
+  { to: '/services', label: 'Services' },
+  { to: '/about', label: 'About Us' },
+  { to: '/#book', label: 'Book' },
+  { to: '/#find-us', label: 'Find Us' },
 ];
 
 export default function Footer() {
@@ -18,9 +18,9 @@ export default function Footer() {
         <p className="mb-6.5 font-display text-white/60 italic">Where beautiful smiles begin.</p>
         <div className="mb-6.5 flex flex-wrap justify-center gap-5.5 text-[0.88rem] font-semibold">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="opacity-80 hover:opacity-100">
+            <Link key={l.to} to={l.to} className="opacity-80 hover:opacity-100">
               {l.label}
-            </a>
+            </Link>
           ))}
         </div>
         <p className="text-[0.74rem] text-white/35">

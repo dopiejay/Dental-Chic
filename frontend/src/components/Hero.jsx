@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function Hero() {
   return (
     <section id="top" className="pt-18 pb-16">
@@ -23,12 +25,12 @@ export default function Hero() {
             >
               Book an Appointment
             </a>
-            <a
-              href="tel:+265998951880"
+            <Link
+              to="/services"
               className="rounded-full border-[1.5px] border-ink px-7.5 py-4 text-base font-bold transition-colors hover:bg-ink hover:text-white"
             >
-              Call 0998 95 18 80
-            </a>
+              Explore Our Services
+            </Link>
           </div>
 
           <div className="flex items-center gap-5">
@@ -72,6 +74,14 @@ export default function Hero() {
           <div className="absolute bottom-[6%] left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full border border-stone bg-white px-4.5 py-2.5 text-sm font-bold shadow-[0_10px_30px_rgba(27,31,29,0.06)]">
             <span className="h-2 w-2 rounded-full bg-chic-green" />
             Accepting RESMAID scheme
+          </div>
+
+          <div className="absolute top-[6%] -right-2 hidden w-52 rounded-2xl border border-stone bg-white p-4 shadow-[0_16px_40px_rgba(27,31,29,0.08)] sm:block">
+            <p className="mb-1 text-[0.8rem] font-bold">Need an appointment?</p>
+            <p className="mb-3 text-[0.76rem] text-slate">Choose a convenient time with our team.</p>
+            <a href="#book" className="text-[0.78rem] font-bold text-chic-green-deep hover:underline">
+              Book Now →
+            </a>
           </div>
         </div>
       </div>
