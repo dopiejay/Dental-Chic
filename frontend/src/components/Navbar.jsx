@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { MenuIcon, XIcon, MessageCircleIcon } from './Icons';
 import Wordmark from './Wordmark';
@@ -12,7 +12,20 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
+
+  const isHome = pathname === '/';
+  const showBg = !isHome || scrolled;
+
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 50);
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   function isActive(to) {
     if (to === '/') return pathname === '/';
@@ -20,10 +33,16 @@ export default function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-stone bg-paper/85 backdrop-blur-md">
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        showBg
+          ? 'border-b border-stone bg-paper/85 backdrop-blur-md'
+          : 'border-b border-white/10 bg-transparent backdrop-blur-sm'
+      }`}
+    >
       <div className="mx-auto flex max-w-6xl items-center gap-8 px-6 py-4">
         <div className="mr-auto">
-          <Wordmark />
+          <Wordmark light={!showBg} />
         </div>
 
         <nav aria-label="Primary" className="hidden gap-7 text-[0.92rem] font-semibold md:flex">
@@ -31,7 +50,11 @@ export default function Navbar() {
             <Link
               key={l.to}
               to={l.to}
-              className={`transition-colors ${isActive(l.to) ? 'text-chic-green-deep' : 'opacity-75 hover:opacity-100'}`}
+              className={`transition-colors ${
+                isActive(l.to)
+                  ? showBg ? 'text-chic-green-deep' : 'text-chic-green'
+                  : showBg ? 'opacity-75 hover:opacity-100 text-ink' : 'text-white/80 hover:text-white'
+              }`}
             >
               {l.label}
             </Link>
@@ -43,14 +66,22 @@ export default function Navbar() {
             href="https://wa.me/265998951880"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 rounded-full bg-stone px-5 py-3 text-sm font-bold transition-colors hover:bg-[#e2e4dd]"
+            className={`flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold transition-colors ${
+              showBg
+                ? 'bg-stone text-ink hover:bg-[#e2e4dd]'
+                : 'bg-white/15 text-white hover:bg-white/25'
+            }`}
           >
             <MessageCircleIcon size={15} />
             WhatsApp
           </a>
           <Link
             to="/book"
-            className="rounded-full bg-ink px-5 py-3 text-sm font-bold text-white transition-all hover:-translate-y-px hover:bg-chic-green-deep"
+            className={`rounded-full px-5 py-3 text-sm font-bold transition-all hover:-translate-y-px ${
+              showBg
+                ? 'bg-ink text-white hover:bg-chic-green-deep'
+                : 'bg-chic-green text-ink hover:bg-white hover:text-chic-green-deep'
+            }`}
           >
             Book Appointment
           </Link>
@@ -62,7 +93,11 @@ export default function Navbar() {
           aria-expanded={open}
           onClick={() => setOpen((o) => !o)}
         >
-          {open ? <XIcon size={24} /> : <MenuIcon size={24} />}
+          {open ? (
+            <XIcon size={24} className={showBg ? '' : 'text-white'} />
+          ) : (
+            <MenuIcon size={24} className={showBg ? '' : 'text-white'} />
+          )}
         </button>
       </div>
 
