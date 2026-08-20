@@ -1,6 +1,4 @@
 import { AwardIcon, MapPinIcon, LayersIcon } from './Icons';
-import aboutImg from '../components/../public/images/dentist.jpg';
-
 const aboutImage = 'images/dentist.jpg';
 
 export default function TrustIntro() {
