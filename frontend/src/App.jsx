@@ -40,7 +40,7 @@ export default function App() {
 
         {/* Admin portal */}
         <Route
-          path="/admin"
+          path="/admin/*"
           element={
             <AdminAuthProvider>
               <Routes>
