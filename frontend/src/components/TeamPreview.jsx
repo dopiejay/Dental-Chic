@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom';
 import { ArrowRightIcon } from './Icons';
-import doctorImage from '../components/../public/images/imagePlaceholder.jpg';
-
 const doctorImage = 'images/imagePlaceholder.jpg';
 
 export default function TeamPreview() {
