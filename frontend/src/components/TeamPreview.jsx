@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { ArrowRightIcon } from './Icons';
+import doctorImage from '../components/../public/images/imagePlaceholder.jpg';
 
-const doctorImage = 'https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=600';
+const doctorImage = 'images/imagePlaceholder.jpg';
 
 export default function TeamPreview() {
   return (

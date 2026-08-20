@@ -8,7 +8,7 @@ import WhyUs from '../components/WhyUs';
 import TreatmentJourney from '../components/TreatmentJourney';
 import TeamPreview from '../components/TeamPreview';
 import Reviews from '../components/Reviews';
-import FindUs from '../components/FindUs';
+{/*import FindUs from '../components/FindUs';*/}
 
 export default function Home() {
   const { hash } = useLocation();
