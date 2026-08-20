@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { HeartIcon, AwardIcon, GemIcon, MessageCircleIcon } from '../components/Icons';
 import PageHero from '../components/PageHero';
 const aboutImage = 'images/team.jpg';
-const teamImage = 'images/destist.jpg';
+const teamImage = 'images/imagePlaceholder.jpg';
 
 const philosophy = [
   { icon: HeartIcon, title: 'Comfort', desc: 'Gentle, minimally invasive technique — treatment that puts you at ease first.', color: 'bg-chic-teal/10 text-chic-teal' },
