@@ -68,7 +68,7 @@ export default function Appointments() {
             key={f.key}
             onClick={() => setFilter(f.key)}
             className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
-              filter === f.key ? 'bg-ink text-white' : 'bg-white text-ink hover:bg-stone'
+              filter === f.key ? 'bg-chic-green-deep text-white' : 'bg-white text-ink hover:bg-stone'
             }`}
           >
             {f.label}
@@ -80,7 +80,7 @@ export default function Appointments() {
         <p className="mb-6 rounded-xl bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">{error}</p>
       )}
 
-      <div className="overflow-hidden rounded-2xl border border-stone bg-white">
+      <div className="overflow-hidden rounded-2xl border border-stone bg-white shadow-sm">
         {loading ? (
           <p className="p-6 text-sm text-slate">Loading…</p>
         ) : visible.length === 0 ? (
@@ -88,7 +88,7 @@ export default function Appointments() {
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm">
-              <thead className="bg-paper">
+              <thead className="bg-chic-green/5">
                 <tr className="text-[0.72rem] text-slate uppercase">
                   <th className="px-5 py-3 font-semibold">Patient</th>
                   <th className="px-5 py-3 font-semibold">Service</th>

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAdminAuth } from '../context/AdminAuthContext';
 import { fetchAppointments } from '../api';
+import { SmileIcon, CalendarIcon, ClockIcon, LayersIcon, PlanIcon } from '../../components/Icons';
 
 const statusStyles = {
   pending: 'bg-yellow-100 text-yellow-800',
@@ -67,7 +68,7 @@ export default function Dashboard() {
 
   return (
     <div>
-      <p className="mb-1 font-display text-2xl font-medium">Good day 👋</p>
+      <p className="mb-1 font-display text-2xl font-medium">Good day <SmileIcon size={22} className="inline-block align-[-0.15em]" /></p>
       <p className="mb-8 text-slate">Here&apos;s what&apos;s happening at Dental Chic today.</p>
 
       {error && (
@@ -76,15 +77,15 @@ export default function Dashboard() {
 
       {/* Stats */}
       <div className="mb-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <StatCard label="Today's Appointments" value={loading ? '—' : stats.today} icon="📅" />
-        <StatCard label="Pending Requests" value={loading ? '—' : stats.pending} icon="🕒" />
-        <StatCard label="This Week" value={loading ? '—' : stats.week} icon="📊" />
-        <StatCard label="Total Bookings" value={loading ? '—' : stats.total} icon="🗂️" />
+        <StatCard label="Today's Appointments" value={loading ? '—' : stats.today} icon={<CalendarIcon size={22} className="text-chic-teal" />} accent="bg-chic-teal/10" />
+        <StatCard label="Pending Requests" value={loading ? '—' : stats.pending} icon={<ClockIcon size={22} className="text-amber-500" />} accent="bg-amber-50" />
+        <StatCard label="This Week" value={loading ? '—' : stats.week} icon={<LayersIcon size={22} className="text-blue-500" />} accent="bg-blue-50" />
+        <StatCard label="Total Bookings" value={loading ? '—' : stats.total} icon={<PlanIcon size={22} className="text-chic-green-deep" />} accent="bg-chic-green/10" />
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.1fr_1fr]">
         {/* Today's schedule */}
-        <div className="rounded-2xl border border-stone bg-white p-6">
+        <div className="rounded-2xl border border-stone bg-white p-6 shadow-sm">
           <div className="mb-5 flex items-center justify-between">
             <h2 className="font-display text-lg font-medium">Today&apos;s Schedule</h2>
             <Link to="/admin/appointments" className="text-sm font-bold text-chic-green-deep hover:underline">
@@ -99,7 +100,7 @@ export default function Dashboard() {
           ) : (
             <ul className="flex flex-col gap-3">
               {todaysSchedule.map((a) => (
-                <li key={a.id} className="flex items-center justify-between rounded-xl bg-paper px-4 py-3">
+                <li key={a.id} className="flex items-center justify-between rounded-xl bg-chic-green/5 px-4 py-3">
                   <div>
                     <p className="text-[0.8rem] font-bold text-chic-teal">{a.preferred_time}</p>
                     <p className="font-semibold">{a.patient_name}</p>
@@ -115,7 +116,7 @@ export default function Dashboard() {
         </div>
 
         {/* Recent bookings */}
-        <div className="rounded-2xl border border-stone bg-white p-6">
+        <div className="rounded-2xl border border-stone bg-white p-6 shadow-sm">
           <h2 className="mb-5 font-display text-lg font-medium">Recent Bookings</h2>
           {loading ? (
             <p className="text-sm text-slate">Loading…</p>
@@ -155,10 +156,10 @@ export default function Dashboard() {
   );
 }
 
-function StatCard({ label, value, icon }) {
+function StatCard({ label, value, icon, accent = 'bg-stone/50' }) {
   return (
-    <div className="rounded-2xl border border-stone bg-white p-5">
-      <div className="mb-3 text-2xl">{icon}</div>
+    <div className={`rounded-2xl border border-stone ${accent} p-5`}>
+      <div className="mb-3">{icon}</div>
       <p className="font-display text-2xl font-medium">{value}</p>
       <p className="text-[0.8rem] text-slate">{label}</p>
     </div>
