@@ -50,12 +50,40 @@ real appointment requests to the backend and stores them in Postgres.
 - `GET /api/health` — uptime check
 - `GET /api/services` — public, powers the service dropdown
 - `POST /api/appointments` — public, the booking form submits here
-- `GET /api/appointments` — **admin only**, list all bookings (for a future reception dashboard)
+- `GET /api/appointments` — **admin only**, list all bookings (powers the admin dashboard/appointments screen)
 - `PATCH /api/appointments/:id` — **admin only**, change a booking's status
 - `POST /api/auth/login` — admin login, returns a token for the two routes above
 
 There's deliberately no public signup route — admin accounts are created directly
 via `seed-admin.js`, the same way you'd hand a receptionist their login.
+
+## Admin portal
+Visit `/admin/login` on the deployed (or local) frontend to sign in with the admin
+account you created via `seed-admin.js`. This is the same React app, not a separate
+deployment — same pattern as Mahogany's `/admin`.
+
+Built so far:
+- **`/admin/login`** — split-screen sign-in
+- **`/admin`** — dashboard: today's appointments, pending requests, this week's
+  total, total bookings, today's schedule, and a recent bookings table. All figures
+  are computed live from real appointment data — there's no patient count or
+  revenue card yet, since there's no patient/billing model in the database yet.
+- **`/admin/appointments`** — full list with status filters (pending / confirmed /
+  completed / cancelled) and inline status updates
+
+The session token is stored in the browser's localStorage and sent as a Bearer
+token on admin API calls.
+
+## Not built yet (next phase, per the original brief)
+- Patients, Staff, Services CMS, Website Content CMS, Gallery Manager,
+  Testimonials manager, Messages/Inquiries, Billing & Payments, Reports,
+  Notifications, Settings — all part of the fuller admin spec but out of scope
+  for this first pass
+- Patient records, treatment plans, billing (needs its own database tables)
+- Real Facebook reviews (still placeholder copy in `Reviews.jsx`)
+- Real clinic/team photography
+- Embedded Google Map on the Find Us section
+- Patient Information and Gallery public pages (from the earlier page-structure brief)
 
 ## Deploy
 
@@ -72,11 +100,3 @@ via `seed-admin.js`, the same way you'd hand a receptionist their login.
    `DATABASE_URL` (Neon), `JWT_SECRET` (generate a real random string), and
    `CORS_ORIGIN` (set this to your deployed Vercel URL once you have it, so the
    API only accepts requests from your actual site)
-
-## Not built yet (next phase, per the original brief)
-- Reception dashboard UI (the API routes exist — `GET/PATCH /api/appointments` —
-  but there's no admin frontend screen yet)
-- Patient records, treatment plans, billing
-- Real Facebook reviews (still placeholder copy in `Reviews.jsx`)
-- Real clinic/team photography
-- Embedded Google Map on the Find Us section

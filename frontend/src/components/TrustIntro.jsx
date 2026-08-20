@@ -1,6 +1,7 @@
 import { AwardIcon, MapPinIcon, LayersIcon } from './Icons';
+import aboutImg from '../components/../public/images/dentist.jpg';
 
-const aboutImage = 'https://images.pexels.com/photos/3952017/pexels-photo-3952017.jpeg?auto=compress&cs=tinysrgb&w=800';
+const aboutImage = 'images/dentist.jpg';
 
 export default function TrustIntro() {
   return (
