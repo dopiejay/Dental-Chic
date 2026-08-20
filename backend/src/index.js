@@ -15,12 +15,12 @@ const app = express();
 
 const allowedOrigins = (process.env.CORS_ORIGIN || '*')
   .split(',')
-  .map((o) => o.trim());
+  .map((o) => o.trim().replace(/\/+$/, ''));
 
 app.use(
   cors({
     origin(origin, cb) {
-      if (!origin || allowedOrigins.includes('*') || allowedOrigins.includes(origin)) {
+      if (!origin || allowedOrigins.includes('*') || allowedOrigins.includes(origin.replace(/\/+$/, ''))) {
         cb(null, true);
       } else {
         cb(new Error('Not allowed by CORS'));
