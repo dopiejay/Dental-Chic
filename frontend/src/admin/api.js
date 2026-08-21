@@ -32,3 +32,21 @@ export async function updateAppointmentStatus(token, id, status) {
   if (!res.ok) throw new Error(body.error || 'Could not update appointment.');
   return body;
 }
+
+export async function fetchMessages(token) {
+  const res = await fetch(`${API_URL}/api/contact`, { headers: authHeaders(token) });
+  const body = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(body.error || 'Could not load messages.');
+  return body;
+}
+
+export async function updateMessageReadStatus(token, id, is_read) {
+  const res = await fetch(`${API_URL}/api/contact/${id}`, {
+    method: 'PATCH',
+    headers: authHeaders(token),
+    body: JSON.stringify({ is_read }),
+  });
+  const body = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(body.error || 'Could not update message.');
+  return body;
+}

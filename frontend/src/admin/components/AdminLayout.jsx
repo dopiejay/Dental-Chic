@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { useAdminAuth } from '../context/AdminAuthContext';
 import ToothIcon from '../../components/ToothIcon';
-import { MonitorIcon, CalendarIcon } from '../../components/Icons';
+import { MonitorIcon, CalendarIcon, MailIcon } from '../../components/Icons';
 
 const navItems = [
   { to: '/admin', label: 'Dashboard', icon: MonitorIcon, end: true },
   { to: '/admin/appointments', label: 'Appointments', icon: CalendarIcon },
+  { to: '/admin/messages', label: 'Messages', icon: MailIcon },
 ];
 
 export default function AdminLayout() {

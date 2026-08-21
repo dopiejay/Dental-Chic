@@ -70,13 +70,15 @@ Built so far:
   revenue card yet, since there's no patient/billing model in the database yet.
 - **`/admin/appointments`** — full list with status filters (pending / confirmed /
   completed / cancelled) and inline status updates
+- **`/admin/messages`** — inbox of contact form submissions with unread/read
+  filters and mark read/unread (backed by `GET`/`PATCH /api/contact`, admin-only)
 
 The session token is stored in the browser's localStorage and sent as a Bearer
 token on admin API calls.
 
 ## Not built yet (next phase, per the original brief)
 - Patients, Staff, Services CMS, Website Content CMS, Gallery Manager,
-  Testimonials manager, Messages/Inquiries, Billing & Payments, Reports,
+  Testimonials manager, Billing & Payments, Reports,
   Notifications, Settings — all part of the fuller admin spec but out of scope
   for this first pass
 - Patient records, treatment plans, billing (needs its own database tables)
