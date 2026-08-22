@@ -18,7 +18,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-ink/20" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 pt-28 pb-20 md:flex md:min-h-[600px] md:items-center md:py-24 lg:min-h-[700px]">
+      <div className="relative mx-auto max-w-6xl px-6 pt-28 pb-20 md:flex md:min-h-[600px] md:items-center md:py-24 lg:min-h-[700px]">
         {/* Left: Copy */}
         <div className="relative z-10 max-w-xl">
           <p className="mb-3 text-[0.8rem] font-bold tracking-[0.14em] text-chic-green uppercase">
