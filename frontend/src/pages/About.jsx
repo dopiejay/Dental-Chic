@@ -12,6 +12,12 @@ const philosophy = [
 
 const approach = ['Listen', 'Diagnose', 'Treat', 'Follow Up'];
 
+const team = [
+  { role: 'Dental Assistant', desc: 'Chairside support across general, cosmetic, and orthodontic treatments.' },
+  { role: 'Clinic Support', desc: 'Sterilisation, treatment prep, and everything behind a safe, smooth visit.' },
+  { role: 'Front Desk', desc: 'Your first hello — appointments, reminders, and questions answered.' },
+];
+
 export default function AboutPage() {
   return (
     <>
@@ -105,7 +111,7 @@ export default function AboutPage() {
           <div className="relative h-full min-h-[300px] overflow-hidden">
             <img
               src={teamImage}
-              alt="Dr. Shabana Yusuf — Lead Dentist"
+              alt="Dr. Shabana Yusuf — Founder and Lead Dentist"
               className="absolute inset-0 h-full w-full object-cover"
               loading="lazy"
             />
@@ -113,11 +119,11 @@ export default function AboutPage() {
           </div>
           <div className="p-8 text-center md:text-left">
             <h3 className="mb-1.5 font-display text-2xl font-medium">Dr. Shabana Yusuf</h3>
-            <p className="mb-3.5 text-sm font-bold text-chic-green-deep">Lead Dentist · Cosmetic &amp; General Dentistry</p>
+            <p className="mb-3.5 text-sm font-bold text-chic-green-deep">Founder &amp; Lead Dentist · Cosmetic &amp; General Dentistry</p>
             <p className="mb-4.5 text-slate leading-relaxed">
-              Leads Dental Chic&apos;s clinical work with a specialist interest in cosmetic
-              dentistry, offering minimally invasive general care alongside orthodontics and minor
-              oral surgery for patients across Blantyre.
+              Founded Dental Chic in 2013 and leads its clinical team, with a specialist interest
+              in cosmetic dentistry — offering minimally invasive general care alongside
+              orthodontics and minor oral surgery for patients across Blantyre.
             </p>
             <div className="flex flex-wrap justify-center gap-2.5 md:justify-start">
               {['Cosmetic Dentistry', 'Orthodontics', 'Minor Oral Surgery'].map((t) => (
@@ -128,8 +134,25 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
+
+        <div className="mx-auto mt-6 grid max-w-4xl gap-5 sm:grid-cols-3">
+          {team.map((m) => (
+            <div key={m.role} className="overflow-hidden rounded-3xl border border-stone bg-white">
+              <img
+                src={teamImage}
+                alt={`${m.role} at Dental Chic`}
+                className="aspect-[4/3] w-full object-cover"
+                loading="lazy"
+              />
+              <div className="p-6 text-center">
+                <h3 className="mb-1.5 font-display text-lg font-medium">{m.role}</h3>
+                <p className="text-[0.85rem] text-slate leading-relaxed">{m.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
         <p className="mx-auto mt-8 max-w-4xl text-center text-[0.82rem] text-slate">
-          More team profiles will be added here as the clinic grows.
+          Individual team profiles coming soon as the clinic grows.
         </p>
       </section>
 

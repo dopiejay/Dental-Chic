@@ -13,7 +13,7 @@ const services = [
   {
     icon: SparklesIcon,
     title: 'Cosmetic Dentistry',
-    desc: "Enhance the appearance of your smile with veneers, whitening, and full smile makeovers — Dr. Yusuf's specialist focus.",
+    desc: "Enhance the appearance of your smile with veneers, whitening, and full smile makeovers — a clinic specialty led by Dr. Yusuf.",
     color: 'from-amber-100/60 to-orange-50/40',
     iconColor: 'text-amber-600 bg-amber-100/60',
     img: '/images/cosmetic.jpg',

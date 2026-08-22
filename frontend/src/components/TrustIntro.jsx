@@ -35,9 +35,9 @@ export default function TrustIntro() {
             and a clinic that treats every visit like it matters.
           </p>
           <p className="mb-8 text-slate">
-            Dr. Shabana Yusuf leads the practice with a particular focus on cosmetic dentistry,
-            supported by digital X-ray facilities and orthodontic and minor oral surgery services
-            on site.
+            Founded by Dr. Shabana Yusuf, who leads our clinical work with a particular focus on
+            cosmetic dentistry, the practice is supported by its clinical and front-desk team —
+            with digital X-ray facilities and orthodontic and minor oral surgery services on site.
           </p>
 
           <div className="flex gap-10">
