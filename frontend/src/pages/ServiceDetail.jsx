@@ -59,6 +59,19 @@ export default function ServiceDetail() {
               What is this treatment?
             </p>
             <p className="text-slate leading-relaxed">{service.intro}</p>
+            {hasIncludes && (
+              <div className="mt-6 flex flex-wrap gap-2.5">
+                {service.includes.map((item) => (
+                  <span
+                    key={item.title}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-stone bg-white px-4 py-2 text-[0.85rem] font-semibold text-ink"
+                  >
+                    <CheckCircleIcon size={15} className="text-chic-teal" />
+                    {item.title}
+                  </span>
+                ))}
+              </div>
+            )}
             {service.whoFor && (
               <div className="mt-8 rounded-3xl border border-stone bg-white p-6">
                 <p className="mb-2 flex items-center gap-2 font-display text-lg font-medium text-ink">
@@ -71,29 +84,6 @@ export default function ServiceDetail() {
           </div>
         </div>
       </section>
-
-      {/* What does it include? */}
-      {hasIncludes && (
-        <section className="bg-white px-6 py-20">
-          <div className="mx-auto mb-10 max-w-xl text-center">
-            <p className="mb-3 text-[0.8rem] font-bold tracking-[0.14em] text-chic-green-deep uppercase">
-              What does it include?
-            </p>
-            <h2 className="font-display text-[clamp(1.7rem,3vw,2.3rem)] font-medium">
-              Care tailored to your needs
-            </h2>
-          </div>
-          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {service.includes.map((item) => (
-              <div key={item.title} className="rounded-3xl border border-stone/80 bg-paper p-6">
-                <CheckCircleIcon size={22} className="mb-3 text-chic-teal" />
-                <h3 className="mb-1.5 font-display text-lg font-medium text-ink">{item.title}</h3>
-                <p className="text-[0.88rem] text-slate leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
 
       {/* What to expect */}
       {hasSteps && (
