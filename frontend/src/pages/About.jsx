@@ -133,7 +133,7 @@ export default function AboutPage() {
           ))}
         </div>
         <p className="mx-auto mt-8 max-w-4xl text-center text-[0.82rem] text-slate">
-          Individual profiles coming soon as the clinic grows.
+          Full board composition and photos to be confirmed with Dental Chic prior to launch.
         </p>
       </section>
 
