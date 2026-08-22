@@ -6,9 +6,9 @@ import TrustIntro from '../components/TrustIntro';
 import ServicesPreview from '../components/ServicesPreview';
 import WhyUs from '../components/WhyUs';
 import TreatmentJourney from '../components/TreatmentJourney';
-{/*import TeamPreview from '../components/TeamPreview';*/}
+// import TeamPreview from '../components/TeamPreview';
 import Reviews from '../components/Reviews';
-{/*import FindUs from '../components/FindUs';*/}
+// import FindUs from '../components/FindUs';
 
 export default function Home() {
   const { hash } = useLocation();
@@ -27,7 +27,6 @@ export default function Home() {
       <ServicesPreview />
       <WhyUs />
       <TreatmentJourney />
-      <TeamPreview />
       <Reviews />
 
       {/* CTA Section */}
