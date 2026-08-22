@@ -1,8 +1,8 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HeartIcon, AwardIcon, GemIcon, MessageCircleIcon } from '../components/Icons';
 import PageHero from '../components/PageHero';
 const aboutImage = 'images/team.jpg';
-const teamImage = 'images/imagePlaceholder.jpg';
 
 const philosophy = [
   { icon: HeartIcon, title: 'Comfort', desc: 'Gentle, minimally invasive technique — treatment that puts you at ease first.', color: 'bg-chic-teal/10 text-chic-teal' },
@@ -13,9 +13,30 @@ const philosophy = [
 const approach = ['Listen', 'Diagnose', 'Treat', 'Follow Up'];
 
 const team = [
-  { role: 'Dental Assistant', desc: 'Chairside support across general, cosmetic, and orthodontic treatments.' },
-  { role: 'Clinic Support', desc: 'Sterilisation, treatment prep, and everything behind a safe, smooth visit.' },
-  { role: 'Front Desk', desc: 'Your first hello — appointments, reminders, and questions answered.' },
+  {
+    name: 'Dr. Shabana Yusuf',
+    role: 'Founder & Lead Dentist',
+    desc: 'Founded Dental Chic in 2013 and leads its clinical team, with a specialist interest in cosmetic dentistry, orthodontics, and minor oral surgery.',
+    img: 'images/imagePlaceholder.jpg',
+  },
+  {
+    name: 'Dental Assistant',
+    role: 'Chairside Care',
+    desc: 'Supports Dr. Yusuf across general, cosmetic, and orthodontic treatments — keeping every visit smooth and comfortable.',
+    img: 'images/imagePlaceholder.jpg',
+  },
+  {
+    name: 'Clinic Support',
+    role: 'Sterilisation & Prep',
+    desc: 'Handles sterilisation, treatment prep, and the behind-the-scenes work of a safe, modern clinic.',
+    img: 'images/imagePlaceholder.jpg',
+  },
+  {
+    name: 'Front Desk',
+    role: 'Patient Coordination',
+    desc: 'Your first hello — appointments, reminders, payments, and answers to any question about your visit.',
+    img: 'images/imagePlaceholder.jpg',
+  },
 ];
 
 export default function AboutPage() {
@@ -107,52 +128,13 @@ export default function AboutPage() {
           <h2 className="font-display text-[clamp(1.8rem,3vw,2.4rem)] font-medium">The people behind your smile</h2>
         </div>
 
-        <div className="mx-auto grid max-w-4xl grid-cols-1 items-center gap-10 overflow-hidden rounded-3xl border border-stone bg-white md:grid-cols-[280px_1fr]">
-          <div className="relative h-full min-h-[300px] overflow-hidden">
-            <img
-              src={teamImage}
-              alt="Dr. Shabana Yusuf — Founder and Lead Dentist"
-              className="absolute inset-0 h-full w-full object-cover"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/40 to-transparent" />
-          </div>
-          <div className="p-8 text-center md:text-left">
-            <h3 className="mb-1.5 font-display text-2xl font-medium">Dr. Shabana Yusuf</h3>
-            <p className="mb-3.5 text-sm font-bold text-chic-green-deep">Founder &amp; Lead Dentist · Cosmetic &amp; General Dentistry</p>
-            <p className="mb-4.5 text-slate leading-relaxed">
-              Founded Dental Chic in 2013 and leads its clinical team, with a specialist interest
-              in cosmetic dentistry — offering minimally invasive general care alongside
-              orthodontics and minor oral surgery for patients across Blantyre.
-            </p>
-            <div className="flex flex-wrap justify-center gap-2.5 md:justify-start">
-              {['Cosmetic Dentistry', 'Orthodontics', 'Minor Oral Surgery'].map((t) => (
-                <span key={t} className="rounded-full bg-stone px-3.5 py-1.5 text-[0.8rem] font-semibold text-ink">
-                  {t}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="mx-auto mt-6 grid max-w-4xl gap-5 sm:grid-cols-3">
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((m) => (
-            <div key={m.role} className="overflow-hidden rounded-3xl border border-stone bg-white">
-              <img
-                src={teamImage}
-                alt={`${m.role} at Dental Chic`}
-                className="aspect-[4/3] w-full object-cover"
-                loading="lazy"
-              />
-              <div className="p-6 text-center">
-                <h3 className="mb-1.5 font-display text-lg font-medium">{m.role}</h3>
-                <p className="text-[0.85rem] text-slate leading-relaxed">{m.desc}</p>
-              </div>
-            </div>
+            <TeamCard key={m.name} member={m} />
           ))}
         </div>
         <p className="mx-auto mt-8 max-w-4xl text-center text-[0.82rem] text-slate">
-          Individual team profiles coming soon as the clinic grows.
+          Individual profiles coming soon as the clinic grows.
         </p>
       </section>
 
@@ -185,5 +167,50 @@ export default function AboutPage() {
         </div>
       </section>
     </>
+  );
+}
+
+function TeamCard({ member }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div
+      tabIndex={0}
+      onClick={() => setOpen((o) => !o)}
+      onKeyDown={(e) => e.key === 'Escape' && setOpen(false)}
+      aria-label={`${member.name} — ${member.role}`}
+      className="group relative cursor-pointer overflow-hidden rounded-3xl border border-stone bg-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-chic-teal"
+    >
+      <img
+        src={member.img}
+        alt={`${member.name} — ${member.role}`}
+        className="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        loading="lazy"
+      />
+
+      {/* Base gradient for name legibility */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent" />
+
+      {/* Hover / tap bio */}
+      <div
+        className={`pointer-events-none absolute inset-0 flex flex-col justify-end bg-chic-green-deep/90 p-5 transition-opacity duration-300 ${
+          open ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 group-focus-within:opacity-100'
+        }`}
+      >
+        <p
+          className={`text-[0.86rem] leading-relaxed text-white/90 transition-transform duration-300 ${
+            open ? 'translate-y-0' : 'translate-y-2 group-hover:translate-y-0'
+          }`}
+        >
+          {member.desc}
+        </p>
+      </div>
+
+      {/* Name + role */}
+      <div className="absolute inset-x-0 bottom-0 p-5">
+        <h3 className="font-display text-lg font-medium leading-snug text-white">{member.name}</h3>
+        <p className="mt-0.5 text-[0.72rem] font-bold tracking-[0.12em] text-chic-green uppercase">{member.role}</p>
+      </div>
+    </div>
   );
 }
