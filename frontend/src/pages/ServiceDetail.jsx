@@ -1,16 +1,12 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import {
-  CalendarIcon,
-  MessageCircleIcon,
   ArrowRightIcon,
   CheckCircleIcon,
   HeartHandshakeIcon,
 } from '../components/Icons';
 import PageHero from '../components/PageHero';
 import { services } from '../data/services';
-
-const WHATSAPP_URL = 'https://wa.me/265998951880';
 
 export default function ServiceDetail() {
   const { slug } = useParams();
@@ -38,7 +34,6 @@ export default function ServiceDetail() {
   const Icon = service.icon;
   const hasIncludes = service.includes?.length > 0;
   const hasSteps = service.steps?.length > 0;
-  const hasWhyUs = service.whyUs?.length > 0;
   const hasFaqs = service.faqs?.length > 0;
 
   return (
@@ -110,28 +105,6 @@ export default function ServiceDetail() {
         </section>
       )}
 
-      {/* Why choose Dental Chic */}
-      {hasWhyUs && (
-        <section className="bg-gradient-to-br from-stone to-white px-6 py-20">
-          <div className="mx-auto mb-10 max-w-xl text-center">
-            <p className="mb-3 text-[0.8rem] font-bold tracking-[0.14em] text-chic-green-deep uppercase">
-              Why Dental Chic
-            </p>
-            <h2 className="font-display text-[clamp(1.7rem,3vw,2.3rem)] font-medium">
-              Care that puts you first
-            </h2>
-          </div>
-          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3">
-            {service.whyUs.map((w) => (
-              <div key={w.title} className="rounded-3xl bg-white p-7 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-chic-teal/5">
-                <h3 className="mb-2 font-display text-lg font-medium text-ink">{w.title}</h3>
-                <p className="text-[0.88rem] text-slate leading-relaxed">{w.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
       {/* FAQs */}
       {hasFaqs && (
         <section className="bg-paper px-6 py-20">
@@ -150,36 +123,6 @@ export default function ServiceDetail() {
           </div>
         </section>
       )}
-
-      {/* Final CTA */}
-      <section className="bg-gradient-to-r from-chic-green-deep to-chic-teal px-6 py-20 text-center text-white">
-        <div className="mx-auto max-w-xl">
-          <h2 className="mb-4 font-display text-[clamp(1.7rem,3vw,2.3rem)] font-medium">
-            Not sure this is the right treatment?
-          </h2>
-          <p className="mb-8 text-white/80">
-            Our team can help you work out the right next step for your smile.
-          </p>
-          <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <Link
-              to="/book"
-              className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-chic-green-deep transition-all hover:-translate-y-px hover:bg-white/90"
-            >
-              <CalendarIcon size={18} />
-              Book an Appointment
-            </Link>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-white/40 px-8 py-4 text-base font-bold text-white transition-all hover:bg-white/10"
-            >
-              <MessageCircleIcon size={18} />
-              Talk to Our Team
-            </a>
-          </div>
-        </div>
-      </section>
 
       {/* Back to all services */}
       <div className="bg-paper px-6 pb-16 pt-10 text-center">

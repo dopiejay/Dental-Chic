@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { MapPinIcon, PhoneIcon, MailIcon, ClockIcon, MessageCircleIcon, SendIcon } from '../components/Icons';
 import PageHero from '../components/PageHero';
 
@@ -160,17 +159,6 @@ export default function ContactPage() {
               {status === 'error' && <p className="text-[0.85rem] font-semibold text-red-600">{error}</p>}
             </form>
           </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="bg-gradient-to-r from-chic-green-deep to-chic-teal px-6 py-20 text-center text-white">
-        <div className="mx-auto max-w-xl">
-          <h2 className="mb-4 font-display text-[clamp(1.7rem,3vw,2.3rem)] font-medium">Prefer to book directly?</h2>
-          <p className="mb-8 text-white/80">Schedule your appointment online in just a few clicks.</p>
-          <Link to="/book" className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-chic-green-deep transition-all hover:-translate-y-px hover:bg-white/90">
-            Book an Appointment
-          </Link>
         </div>
       </section>
     </>
