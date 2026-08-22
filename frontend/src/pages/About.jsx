@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HeartIcon, AwardIcon, GemIcon, MessageCircleIcon } from '../components/Icons';
 import PageHero from '../components/PageHero';
@@ -171,40 +170,17 @@ export default function AboutPage() {
 }
 
 function TeamCard({ member }) {
-  const [open, setOpen] = useState(false);
-
   return (
-    <div
-      tabIndex={0}
-      onClick={() => setOpen((o) => !o)}
-      onKeyDown={(e) => e.key === 'Escape' && setOpen(false)}
-      aria-label={`${member.name} — ${member.role}`}
-      className="group relative cursor-pointer overflow-hidden rounded-3xl border border-stone bg-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-chic-teal"
-    >
+    <div className="relative overflow-hidden rounded-3xl border border-stone bg-ink">
       <img
         src={member.img}
         alt={`${member.name} — ${member.role}`}
-        className="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        className="aspect-[3/4] w-full object-cover"
         loading="lazy"
       />
 
-      {/* Base gradient for name legibility */}
+      {/* Gradient for name legibility */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent" />
-
-      {/* Hover / tap bio */}
-      <div
-        className={`pointer-events-none absolute inset-0 flex flex-col justify-end bg-chic-green-deep/90 p-5 transition-opacity duration-300 ${
-          open ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 group-focus-within:opacity-100'
-        }`}
-      >
-        <p
-          className={`text-[0.86rem] leading-relaxed text-white/90 transition-transform duration-300 ${
-            open ? 'translate-y-0' : 'translate-y-2 group-hover:translate-y-0'
-          }`}
-        >
-          {member.desc}
-        </p>
-      </div>
 
       {/* Name + role */}
       <div className="absolute inset-x-0 bottom-0 p-5">
