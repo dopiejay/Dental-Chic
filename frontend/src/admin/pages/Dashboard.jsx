@@ -68,8 +68,8 @@ export default function Dashboard() {
 
   return (
     <div>
-      <p className="mb-1 font-display text-2xl font-medium">Good day <SmileIcon size={22} className="inline-block align-[-0.15em]" /></p>
-      <p className="mb-8 text-slate">Here&apos;s what&apos;s happening at Dental Chic today.</p>
+      <p className="mb-1 font-display text-2xl font-bold">Good day <SmileIcon size={22} className="inline-block align-[-0.15em]" /></p>
+      <p className="mb-8 text-slate">Here&apos;s what&apos;s happening at HopeDentals today.</p>
 
       {error && (
         <p className="mb-6 rounded-xl bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">{error}</p>
@@ -77,18 +77,18 @@ export default function Dashboard() {
 
       {/* Stats */}
       <div className="mb-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <StatCard label="Today's Appointments" value={loading ? '—' : stats.today} icon={<CalendarIcon size={22} className="text-chic-teal" />} accent="bg-chic-teal/10" />
+        <StatCard label="Today's Appointments" value={loading ? '—' : stats.today} icon={<CalendarIcon size={22} className="text-hope-accent" />} accent="bg-hope-accent/10" />
         <StatCard label="Pending Requests" value={loading ? '—' : stats.pending} icon={<ClockIcon size={22} className="text-amber-500" />} accent="bg-amber-50" />
         <StatCard label="This Week" value={loading ? '—' : stats.week} icon={<LayersIcon size={22} className="text-blue-500" />} accent="bg-blue-50" />
-        <StatCard label="Total Bookings" value={loading ? '—' : stats.total} icon={<PlanIcon size={22} className="text-chic-green-deep" />} accent="bg-chic-green/10" />
+        <StatCard label="Total Bookings" value={loading ? '—' : stats.total} icon={<PlanIcon size={22} className="text-hope-teal" />} accent="bg-hope-sky/10" />
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.1fr_1fr]">
         {/* Today's schedule */}
         <div className="rounded-2xl border border-stone bg-white p-6 shadow-sm">
           <div className="mb-5 flex items-center justify-between">
-            <h2 className="font-display text-lg font-medium">Today&apos;s Schedule</h2>
-            <Link to="/admin/appointments" className="text-sm font-bold text-chic-green-deep hover:underline">
+            <h2 className="font-display text-lg font-bold">Today&apos;s Schedule</h2>
+            <Link to="/admin/appointments" className="text-sm font-bold text-hope-teal hover:underline">
               View All →
             </Link>
           </div>
@@ -100,9 +100,9 @@ export default function Dashboard() {
           ) : (
             <ul className="flex flex-col gap-3">
               {todaysSchedule.map((a) => (
-                <li key={a.id} className="flex items-center justify-between rounded-xl bg-chic-green/5 px-4 py-3">
+                <li key={a.id} className="flex items-center justify-between rounded-xl bg-hope-sky/5 px-4 py-3">
                   <div>
-                    <p className="text-[0.8rem] font-bold text-chic-teal">{a.preferred_time}</p>
+                    <p className="text-[0.8rem] font-bold text-hope-accent">{a.preferred_time}</p>
                     <p className="font-semibold">{a.patient_name}</p>
                     <p className="text-[0.85rem] text-slate">{a.service_name}</p>
                   </div>
@@ -117,7 +117,7 @@ export default function Dashboard() {
 
         {/* Recent bookings */}
         <div className="rounded-2xl border border-stone bg-white p-6 shadow-sm">
-          <h2 className="mb-5 font-display text-lg font-medium">Recent Bookings</h2>
+          <h2 className="mb-5 font-display text-lg font-bold">Recent Bookings</h2>
           {loading ? (
             <p className="text-sm text-slate">Loading…</p>
           ) : recent.length === 0 ? (
@@ -160,7 +160,7 @@ function StatCard({ label, value, icon, accent = 'bg-stone/50' }) {
   return (
     <div className={`rounded-2xl border border-stone ${accent} p-5`}>
       <div className="mb-3">{icon}</div>
-      <p className="font-display text-2xl font-medium">{value}</p>
+      <p className="font-display text-2xl font-bold">{value}</p>
       <p className="text-[0.8rem] text-slate">{label}</p>
     </div>
   );

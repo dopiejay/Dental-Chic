@@ -12,21 +12,21 @@ export default function TreatmentJourney() {
     <section className="bg-stone px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <div className="mb-14 text-center">
-          <p className="mb-3 text-[0.8rem] font-bold tracking-[0.14em] text-chic-green-deep uppercase">How it works</p>
+          <p className="mb-3 text-[0.8rem] font-bold tracking-[0.14em] text-hope-teal uppercase">How it works</p>
           <h2 className="font-display text-[clamp(1.8rem,3vw,2.6rem)] font-medium">
-            Your journey to a <span className="italic text-chic-teal">healthier smile</span>.
+            Your journey to a <span className="italic text-hope-accent">healthier smile</span>.
           </h2>
         </div>
 
         <div className="relative flex flex-col items-center justify-between gap-8 sm:flex-row sm:items-start sm:gap-4">
           {/* Connecting line */}
-          <div className="absolute top-7 left-0 right-0 hidden h-[2px] bg-gradient-to-r from-chic-teal/10 via-chic-teal/30 to-chic-teal/10 sm:block" />
+          <div className="absolute top-7 left-0 right-0 hidden h-[2px] bg-gradient-to-r from-hope-accent/10 via-hope-accent/30 to-hope-accent/10 sm:block" />
 
-          {steps.map((step, i) => {
+          {steps.map((step) => {
             const Icon = step.icon;
             return (
               <div key={step.num} className="relative flex flex-1 flex-col items-center text-center">
-                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border-[3px] border-chic-teal bg-white text-chic-teal transition-transform hover:scale-110 hover:bg-chic-teal hover:text-white">
+                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border-[3px] border-hope-accent bg-white text-hope-accent transition-transform hover:scale-110 hover:bg-hope-accent hover:text-white">
                   <Icon size={24} />
                 </div>
                 <h3 className="mb-2 font-display text-lg font-medium text-ink">{step.title}</h3>

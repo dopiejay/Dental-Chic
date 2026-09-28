@@ -6,7 +6,7 @@ const router = Router();
 
 // POST /api/appointments — public, called from the booking form
 router.post('/', async (req, res) => {
-  const { service_id, service_name, patient_name, patient_phone, preferred_date, preferred_time } = req.body;
+  const { service_id, service_name, branch, patient_name, patient_phone, preferred_date, preferred_time } = req.body;
 
   if (!service_name || !patient_name || !patient_phone || !preferred_date || !preferred_time) {
     return res.status(400).json({ error: 'Missing required fields.' });
@@ -14,10 +14,10 @@ router.post('/', async (req, res) => {
 
   try {
     const result = await query(
-      `INSERT INTO appointments (service_id, service_name, patient_name, patient_phone, preferred_date, preferred_time)
-       VALUES ($1, $2, $3, $4, $5, $6)
+      `INSERT INTO appointments (service_id, service_name, branch, patient_name, patient_phone, preferred_date, preferred_time)
+       VALUES ($1, $2, $3, $4, $5, $6, $7)
        RETURNING id, status, created_at`,
-      [service_id || null, service_name, patient_name, patient_phone, preferred_date, preferred_time]
+      [service_id || null, service_name, branch || null, patient_name, patient_phone, preferred_date, preferred_time]
     );
     res.status(201).json(result.rows[0]);
   } catch (err) {
@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
 router.get('/', requireAdmin, async (req, res) => {
   try {
     const result = await query(
-      `SELECT id, service_name, patient_name, patient_phone, preferred_date, preferred_time, status, created_at
+      `SELECT id, service_name, branch, patient_name, patient_phone, preferred_date, preferred_time, status, created_at
        FROM appointments
        ORDER BY preferred_date ASC, created_at DESC`
     );

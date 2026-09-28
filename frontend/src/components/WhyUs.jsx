@@ -3,26 +3,26 @@ import { SmileIcon, ShieldIcon, ClockIcon, CreditCardIcon } from './Icons';
 const features = [
   {
     icon: SmileIcon,
-    title: 'Gentle Approach',
-    desc: 'Minimally invasive technique designed around your comfort — every visit, every treatment.',
-    color: 'bg-chic-teal/10 text-chic-teal',
+    title: 'Patient-Centred Care',
+    desc: 'Comfort and reassurance at every visit, from check-up to surgery.',
+    color: 'bg-hope-accent/10 text-hope-accent',
   },
   {
     icon: ShieldIcon,
-    title: 'Modern Equipment',
-    desc: 'Digital X-ray, current materials, and on-site diagnostics — accurate and efficient.',
+    title: 'Modern Facilities',
+    desc: 'A well-equipped clinic at Chichiri Shopping Centre.',
     color: 'bg-emerald-100/60 text-emerald-600',
   },
   {
     icon: ClockIcon,
     title: 'Convenient Hours',
-    desc: 'Open Monday to Friday, 9am to 4pm, plus Saturday mornings for working patients.',
+    desc: 'Open through the week, plus Saturday mornings.',
     color: 'bg-amber-100/60 text-amber-600',
   },
   {
     icon: CreditCardIcon,
     title: 'Transparent Pricing',
-    desc: 'Clear costs upfront, no surprises — plus RESMAID scheme accepted.',
+    desc: 'Clear treatment plans explained before anything begins.',
     color: 'bg-blue-100/60 text-blue-600',
   },
 ];
@@ -30,23 +30,21 @@ const features = [
 export default function WhyUs() {
   return (
     <section className="relative overflow-hidden bg-stone px-6 py-24">
-      {/* Decorative background pattern */}
-      <div className="absolute inset-0 opacity-[0.03]">
-        <svg width="100%" height="100%">
-          <defs>
-            <pattern id="dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="1.5" fill="#1B1F1D" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#dots)" />
-        </svg>
-      </div>
+      {/* Decorative dot pattern */}
+      <svg className="absolute inset-0 h-full w-full opacity-[0.03]" aria-hidden="true">
+        <defs>
+          <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1.5" fill="#1B1F1D" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#dots)" />
+      </svg>
 
       <div className="relative z-10 mx-auto max-w-6xl">
-        <div className="mb-14 text-center">
-          <p className="mb-3 text-[0.8rem] font-bold tracking-[0.14em] text-chic-green-deep uppercase">Why Dental Chic</p>
-          <h2 className="font-display text-[clamp(1.8rem,3vw,2.6rem)] font-medium">
-            A clinic that puts <span className="italic text-chic-teal">you</span> first.
+        <div className="mx-auto mb-14 max-w-2xl text-center">
+          <p className="mb-3 text-[0.8rem] font-bold tracking-[0.14em] text-hope-sky uppercase">Why Hope</p>
+          <h2 className="font-display text-[clamp(1.8rem,3vw,2.6rem)] font-medium leading-tight">
+            The trusted choice for a <span className="italic text-hope-accent">healthier smile</span>.
           </h2>
         </div>
 
@@ -56,12 +54,12 @@ export default function WhyUs() {
             return (
               <div
                 key={f.title}
-                className="group relative rounded-3xl bg-white p-7 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-chic-teal/5"
+                className="group relative rounded-3xl bg-white p-7 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-hope-accent/5"
               >
-                <div className="absolute top-0 left-1/2 h-1 w-12 -translate-x-1/2 rounded-b-full bg-chic-teal/40 transition-all group-hover:w-20 group-hover:bg-chic-teal" />
-                <div className={`mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl ${f.color}`}>
-                  <Icon size={26} />
-                </div>
+                <span className="absolute top-0 left-1/2 h-1 w-12 -translate-x-1/2 rounded-b-full bg-hope-accent/40 transition-all duration-300 group-hover:w-20 group-hover:bg-hope-accent" />
+                <span className={`mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl ${f.color}`}>
+                  <Icon size={24} />
+                </span>
                 <h3 className="mb-2 font-display text-lg font-medium text-ink">{f.title}</h3>
                 <p className="text-[0.88rem] text-slate leading-relaxed">{f.desc}</p>
               </div>

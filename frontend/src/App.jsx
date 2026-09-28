@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import ServicesPage from './pages/Services';
 import ServiceDetail from './pages/ServiceDetail';
@@ -16,6 +15,26 @@ import Login from './admin/pages/Login';
 import Dashboard from './admin/pages/Dashboard';
 import Appointments from './admin/pages/Appointments';
 import Messages from './admin/pages/Messages';
+import ScrollToTop from './components/ScrollToTop';
+
+function PublicSite() {
+  return (
+    <>
+      <Navbar />
+      <div className="pt-[var(--nav-h)]">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/services/:slug" element={<ServiceDetail />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/book" element={<BookPage />} />
+        </Routes>
+      </div>
+      <Footer />
+    </>
+  );
+}
 
 export default function App() {
   return (
@@ -23,23 +42,7 @@ export default function App() {
       <ScrollToTop />
       <Routes>
         {/* Public site */}
-        <Route
-          path="/*"
-          element={
-            <>
-              <Navbar />
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/services" element={<ServicesPage />} />
-                <Route path="/services/:slug" element={<ServiceDetail />} />
-                <Route path="/about" element={<AboutPage />} />
-                <Route path="/contact" element={<ContactPage />} />
-                <Route path="/book" element={<BookPage />} />
-              </Routes>
-              <Footer />
-            </>
-          }
-        />
+        <Route path="/*" element={<PublicSite />} />
 
         {/* Admin portal */}
         <Route

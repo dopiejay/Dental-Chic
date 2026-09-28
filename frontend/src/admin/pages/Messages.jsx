@@ -64,11 +64,11 @@ export default function Messages() {
     <div>
       <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="font-display text-2xl font-medium">Messages</h1>
+          <h1 className="font-display text-2xl font-bold">Messages</h1>
           <p className="text-slate">
             Inquiries submitted through the contact page.
             {!loading && unreadCount > 0 && (
-              <span className="ml-2 font-bold text-chic-teal">{unreadCount} unread</span>
+              <span className="ml-2 font-bold text-hope-accent">{unreadCount} unread</span>
             )}
           </p>
         </div>
@@ -80,7 +80,7 @@ export default function Messages() {
             key={f.key}
             onClick={() => setFilter(f.key)}
             className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
-              filter === f.key ? 'bg-chic-green-deep text-white' : 'bg-white text-ink hover:bg-stone'
+              filter === f.key ? 'bg-hope-teal text-white' : 'bg-white text-ink hover:bg-stone'
             }`}
           >
             {f.label}
@@ -101,13 +101,13 @@ export default function Messages() {
         ) : (
           <ul className="divide-y divide-stone/60">
             {visible.map((m) => (
-              <li key={m.id} className={`px-5 py-4 ${m.is_read ? '' : 'bg-chic-teal/[0.04]'}`}>
+              <li key={m.id} className={`px-5 py-4 ${m.is_read ? '' : 'bg-hope-accent/[0.04]'}`}>
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                      <p className={`font-semibold ${m.is_read ? '' : 'text-chic-green-deep'}`}>
+                      <p className={`font-semibold ${m.is_read ? '' : 'text-hope-teal'}`}>
                         {!m.is_read && (
-                          <span className="mr-1.5 inline-block h-2 w-2 rounded-full bg-chic-teal align-middle" />
+                          <span className="mr-1.5 inline-block h-2 w-2 rounded-full bg-hope-accent align-middle" />
                         )}
                         {m.name}
                       </p>
@@ -115,12 +115,12 @@ export default function Messages() {
                     </div>
 
                     <div className="mt-1 flex flex-wrap gap-x-4 gap-y-0.5 text-[0.85rem] text-slate">
-                      <a href={`mailto:${m.email}`} className="flex items-center gap-1.5 hover:text-chic-teal hover:underline">
+                      <a href={`mailto:${m.email}`} className="flex items-center gap-1.5 hover:text-hope-accent hover:underline">
                         <MailIcon size={14} />
                         {m.email}
                       </a>
                       {m.phone && (
-                        <a href={`tel:${m.phone}`} className="flex items-center gap-1.5 hover:text-chic-teal hover:underline">
+                        <a href={`tel:${m.phone}`} className="flex items-center gap-1.5 hover:text-hope-accent hover:underline">
                           <PhoneIcon size={14} />
                           {m.phone}
                         </a>
@@ -135,7 +135,7 @@ export default function Messages() {
                   <button
                     onClick={() => handleToggleRead(m)}
                     disabled={updatingId === m.id}
-                    className="shrink-0 rounded-lg border-[1.5px] border-stone px-3 py-1.5 text-xs font-bold text-slate transition-colors hover:border-chic-teal hover:text-chic-teal disabled:opacity-50"
+                    className="shrink-0 rounded-lg border-[1.5px] border-stone px-3 py-1.5 text-xs font-bold text-slate transition-colors hover:border-hope-accent hover:text-hope-accent disabled:opacity-50"
                   >
                     {m.is_read ? 'Mark Unread' : 'Mark Read'}
                   </button>

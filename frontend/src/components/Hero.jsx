@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { PhoneIcon, CalendarIcon } from './Icons';
 
 const heroImage = '/images/hero-img.jpg';
 
@@ -18,64 +17,59 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-ink/20" />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-6 pt-28 pb-20 md:flex md:min-h-[600px] md:items-center md:py-24 lg:min-h-[700px]">
+      <div className="relative mx-auto max-w-6xl px-6 pt-16 pb-20 md:flex md:min-h-[560px] md:items-center md:py-24 lg:min-h-[640px]">
         {/* Left: Copy */}
         <div className="relative z-10 max-w-xl">
-          <p className="mb-3 text-[0.8rem] font-bold tracking-[0.14em] text-chic-green uppercase">
-            Professional dental care in Blantyre
+          <p className="mb-3 text-[0.8rem] font-bold tracking-[0.14em] text-hope-sky uppercase">
+            Dental care at Chichiri, Blantyre
           </p>
           <h1 className="mb-5 font-display text-[clamp(2.2rem,5vw,3.8rem)] font-medium leading-[1.1] text-white">
-            Your smile, our<br />
-            <span className="italic text-chic-green">passion.</span>
+            Your smile, our <span className="italic text-hope-sky">priority.</span>
           </h1>
           <p className="mb-8 max-w-lg text-[1.05rem] text-white/80">
-            General, cosmetic, and orthodontic dental care in Blantyre — gentle technique, current
-            materials, and a family-friendly clinic built around you.
+            Professional dental care from Hope Dental Surgery at Chichiri Shopping Centre &mdash;
+            dental treatments, tooth replacement and orthodontic care in one accessible location.
           </p>
 
           <div className="flex flex-wrap gap-3">
             <Link
               to="/book"
-              className="inline-flex items-center gap-2 rounded-full bg-chic-green px-7 py-4 text-sm font-bold text-ink transition-all hover:-translate-y-0.5 hover:bg-white hover:text-chic-green-deep"
+              className="inline-flex items-center gap-2 rounded-full bg-hope-sky px-7 py-4 text-sm font-bold text-ink transition-colors hover:bg-white hover:text-hope-teal"
             >
-              <CalendarIcon size={16} />
               Book an appointment
             </Link>
-            <a
-              href="tel:+265998951880"
-              className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-white/30 px-7 py-4 text-sm font-bold text-white transition-colors hover:border-white hover:bg-white/10"
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-white/30 px-7 py-4 text-sm font-bold text-white transition-colors hover:bg-white/10"
             >
-              <PhoneIcon size={16} />
-              Call the clinic
-            </a>
+              Contact Us
+            </Link>
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-6 text-[0.82rem] text-white/60">
             <span className="flex items-center gap-2">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-chic-green" />
-              Since 2013
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-hope-sky" />
+              Established Practice
             </span>
             <span className="flex items-center gap-2">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-chic-green" />
-              Digital X-Ray
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-hope-sky" />
+              Chichiri Shopping Centre
             </span>
             <span className="flex items-center gap-2">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-chic-green" />
-              Kidney Crescent, Blantyre
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-hope-sky" />
+              Dental &amp; Orthodontic Care
             </span>
           </div>
         </div>
       </div>
 
-      {/* Bottom wave divider */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 80" fill="none" className="w-full">
-          <path
-            d="M0 60C240 20 480 0 720 20C960 40 1200 60 1440 40V80H0V60Z"
-            fill="#FAFAF9"
-          />
-        </svg>
-      </div>
+      {/* Wave divider into the paper background */}
+      <svg viewBox="0 0 1440 80" fill="none" className="relative z-10 w-full">
+        <path
+          d="M0 60C240 20 480 0 720 20C960 40 1200 60 1440 40V80H0V60Z"
+          fill="#FAFAF9"
+        />
+      </svg>
     </section>
   );
 }

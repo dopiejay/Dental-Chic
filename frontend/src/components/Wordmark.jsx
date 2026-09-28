@@ -7,9 +7,9 @@ export default function Wordmark({ light = false }) {
       to="/"
       className={`flex items-center gap-2 font-display text-xl font-medium ${light ? 'text-white' : 'text-ink'}`}
     >
-      <ToothIcon className="text-chic-teal" size={26} />
+      <ToothIcon className="text-hope-accent" size={26} />
       <span>
-        Dental<em className="not-italic text-chic-green">Chic</em>
+        Hope<em className="not-italic text-hope-sky">Dentals</em>
       </span>
     </Link>
   );

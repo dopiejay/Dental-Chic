@@ -32,35 +32,35 @@ export default function Login() {
     <div className="grid min-h-screen grid-cols-1 md:grid-cols-2">
       {/* Left panel */}
       <div className="relative hidden flex-col justify-between bg-ink p-12 text-white md:flex">
-        <div className="flex items-center gap-2 font-display text-xl font-medium">
-          <ToothIcon className="text-chic-teal" size={26} />
-          Dental<em className="not-italic text-chic-green">Chic</em>
+        <div className="flex items-center gap-2 font-display text-xl font-bold">
+          <ToothIcon className="text-hope-accent" size={26} />
+          Hope<em className="not-italic text-hope-sky">Dentals</em>
         </div>
 
         <div>
           <svg viewBox="0 0 400 300" width="100%" height="auto" className="mb-8 opacity-90" aria-hidden="true">
             <rect width="400" height="300" rx="24" fill="#ffffff0d" />
-            <circle cx="140" cy="150" r="70" fill="#5FBF4D" opacity="0.15" />
-            <circle cx="260" cy="120" r="45" fill="#2CB4C0" opacity="0.2" />
+            <circle cx="140" cy="150" r="70" fill="#0F6E7E" opacity="0.45" />
+            <circle cx="260" cy="120" r="45" fill="#1E93A0" opacity="0.55" />
           </svg>
-          <p className="font-display text-2xl font-medium italic">
+          <p className="font-display text-2xl font-bold italic">
             "Manage your clinic. Deliver a better patient experience."
           </p>
         </div>
 
-        <p className="text-sm text-white/40">Dental Chic Admin Portal — internal use only</p>
+        <p className="text-sm text-white/40">HopeDentals Admin Portal — internal use only</p>
       </div>
 
       {/* Right panel */}
       <div className="flex flex-col justify-center px-8 py-16 sm:px-16">
         <div className="mx-auto w-full max-w-sm">
-          <div className="mb-8 flex items-center gap-2 font-display text-xl font-medium md:hidden">
-            <ToothIcon className="text-chic-teal" size={24} />
-            Dental<em className="not-italic text-chic-green">Chic</em>
+          <div className="mb-8 flex items-center gap-2 font-display text-xl font-bold md:hidden">
+            <ToothIcon className="text-hope-accent" size={24} />
+            Hope<em className="not-italic text-hope-sky">Dentals</em>
           </div>
 
-          <h1 className="mb-1 font-display text-2xl font-medium">Sign in</h1>
-          <p className="mb-8 text-sm text-slate">Access the Dental Chic admin portal.</p>
+          <h1 className="mb-1 font-display text-2xl font-bold">Sign in</h1>
+          <p className="mb-8 text-sm text-slate">Access the HopeDentals admin portal.</p>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
             <div>
@@ -73,8 +73,8 @@ export default function Login() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full rounded-lg border-[1.5px] border-stone px-3.5 py-3 focus:border-chic-teal focus:outline-none"
-                placeholder="you@dentalchic.com"
+                className="w-full rounded-lg border-[1.5px] border-stone px-3.5 py-3 focus:border-hope-accent focus:outline-none"
+                placeholder="you@hopedentals.com"
               />
             </div>
 
@@ -88,7 +88,7 @@ export default function Login() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full rounded-lg border-[1.5px] border-stone px-3.5 py-3 focus:border-chic-teal focus:outline-none"
+                className="w-full rounded-lg border-[1.5px] border-stone px-3.5 py-3 focus:border-hope-accent focus:outline-none"
                 placeholder="••••••••"
               />
             </div>
@@ -98,7 +98,7 @@ export default function Login() {
             <button
               type="submit"
               disabled={loading}
-              className="mt-1 w-full rounded-full bg-ink px-6 py-3.5 text-sm font-bold text-white transition-all hover:-translate-y-px hover:bg-chic-green-deep disabled:opacity-60"
+              className="mt-1 w-full rounded-full bg-ink px-6 py-3.5 text-sm font-bold text-white transition-all hover:-translate-y-px hover:bg-hope-teal disabled:opacity-60"
             >
               {loading ? 'Signing in…' : 'Sign In'}
             </button>

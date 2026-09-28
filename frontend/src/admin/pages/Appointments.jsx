@@ -57,7 +57,7 @@ export default function Appointments() {
     <div>
       <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="font-display text-2xl font-medium">Appointments</h1>
+          <h1 className="font-display text-2xl font-bold">Appointments</h1>
           <p className="text-slate">Requests submitted through the public site, plus manual bookings.</p>
         </div>
       </div>
@@ -68,7 +68,7 @@ export default function Appointments() {
             key={f.key}
             onClick={() => setFilter(f.key)}
             className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
-              filter === f.key ? 'bg-chic-green-deep text-white' : 'bg-white text-ink hover:bg-stone'
+              filter === f.key ? 'bg-hope-teal text-white' : 'bg-white text-ink hover:bg-stone'
             }`}
           >
             {f.label}
@@ -88,10 +88,11 @@ export default function Appointments() {
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm">
-              <thead className="bg-chic-green/5">
+              <thead className="bg-hope-sky/5">
                 <tr className="text-[0.72rem] text-slate uppercase">
                   <th className="px-5 py-3 font-semibold">Patient</th>
                   <th className="px-5 py-3 font-semibold">Service</th>
+                  <th className="px-5 py-3 font-semibold">Branch</th>
                   <th className="px-5 py-3 font-semibold">Date &amp; Time</th>
                   <th className="px-5 py-3 font-semibold">Phone</th>
                   <th className="px-5 py-3 font-semibold">Status</th>
@@ -103,6 +104,7 @@ export default function Appointments() {
                   <tr key={a.id} className="border-t border-stone/60">
                     <td className="px-5 py-3.5 font-semibold">{a.patient_name}</td>
                     <td className="px-5 py-3.5 text-slate">{a.service_name}</td>
+                    <td className="px-5 py-3.5 text-slate">{a.branch || '—'}</td>
                     <td className="px-5 py-3.5 text-slate">
                       {a.preferred_date}
                       <br />
@@ -119,7 +121,7 @@ export default function Appointments() {
                         disabled={updatingId === a.id}
                         value={a.status}
                         onChange={(e) => handleStatusChange(a.id, e.target.value)}
-                        className="rounded-lg border-[1.5px] border-stone px-2.5 py-1.5 text-sm focus:border-chic-teal focus:outline-none disabled:opacity-50"
+                        className="rounded-lg border-[1.5px] border-stone px-2.5 py-1.5 text-sm focus:border-hope-accent focus:outline-none disabled:opacity-50"
                       >
                         <option value="pending">Pending</option>
                         <option value="confirmed">Confirm</option>

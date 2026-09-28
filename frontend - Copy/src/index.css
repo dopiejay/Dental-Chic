@@ -1,0 +1,47 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+@theme {
+  --color-ink: #1B1F1D;
+  --color-paper: #FAFAF9;
+  --color-stone: #EDEEEA;
+  --color-slate: #6B7280;
+  --color-chic-green: #5FBF4D;
+  --color-chic-green-deep: #3F9A32;
+  --color-chic-teal: #2CB4C0;
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Manrope', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.draw-arc {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  animation: drawArc 1.4s ease forwards 0.3s;
+}
+.arc-teal {
+  animation-delay: 0.6s;
+}
+@keyframes drawArc {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
